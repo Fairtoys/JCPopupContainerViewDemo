@@ -13,6 +13,12 @@
 		022F04FC209A9EBB005CC7D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 022F04FB209A9EBB005CC7D5 /* Assets.xcassets */; };
 		022F04FF209A9EBB005CC7D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 022F04FD209A9EBB005CC7D5 /* LaunchScreen.storyboard */; };
 		022F0502209A9EBB005CC7D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 022F0501209A9EBB005CC7D5 /* main.m */; };
+		022F050A209AA02F005CC7D5 /* JCPopupUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 022F0509209AA02F005CC7D5 /* JCPopupUtils.m */; };
+		02DAE49D209C680100629A39 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE49B209C680100629A39 /* MyViewController.m */; };
+		02DAE49E209C680100629A39 /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DAE49C209C680100629A39 /* MyViewController.xib */; };
+		23D0307E209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */; };
+		23D03081209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D03080209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m */; };
+		DA1536E56CF081B20077B240 /* libPods-JCPopupContainerViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9187507DB798A32E50F75F4 /* libPods-JCPopupContainerViewDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,18 @@
 		022F04FE209A9EBB005CC7D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		022F0500209A9EBB005CC7D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		022F0501209A9EBB005CC7D5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		022F0508209AA02F005CC7D5 /* JCPopupUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtils.h; sourceTree = "<group>"; };
+		022F0509209AA02F005CC7D5 /* JCPopupUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtils.m; sourceTree = "<group>"; };
+		02DAE49A209C680100629A39 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		02DAE49B209C680100629A39 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		02DAE49C209C680100629A39 /* MyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyViewController.xib; sourceTree = "<group>"; };
+		23D0307C209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtilsLayoutAndAnimation.h; sourceTree = "<group>"; };
+		23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtilsLayoutAndAnimation.m; sourceTree = "<group>"; };
+		23D0307F209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCPopupUtilsLayoutAndAnimation+DefaultLayout.h"; sourceTree = "<group>"; };
+		23D03080209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCPopupUtilsLayoutAndAnimation+DefaultLayout.m"; sourceTree = "<group>"; };
+		417971E54E2491BA2A9B240D /* Pods-JCPopupContainerViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JCPopupContainerViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JCPopupContainerViewDemo/Pods-JCPopupContainerViewDemo.release.xcconfig"; sourceTree = "<group>"; };
+		8D1CE6B04A85C2F772222100 /* Pods-JCPopupContainerViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JCPopupContainerViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JCPopupContainerViewDemo/Pods-JCPopupContainerViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		B9187507DB798A32E50F75F4 /* libPods-JCPopupContainerViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JCPopupContainerViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1536E56CF081B20077B240 /* libPods-JCPopupContainerViewDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +63,8 @@
 			children = (
 				022F04F1209A9EBB005CC7D5 /* JCPopupContainerViewDemo */,
 				022F04F0209A9EBB005CC7D5 /* Products */,
+				CA5C011C8D43C897A78D5287 /* Pods */,
+				46AD9275BBA7424AD63A0BFA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,13 +83,39 @@
 				022F04F3209A9EBB005CC7D5 /* AppDelegate.m */,
 				022F04F5209A9EBB005CC7D5 /* ViewController.h */,
 				022F04F6209A9EBB005CC7D5 /* ViewController.m */,
+				022F0508209AA02F005CC7D5 /* JCPopupUtils.h */,
+				022F0509209AA02F005CC7D5 /* JCPopupUtils.m */,
+				23D0307C209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.h */,
+				23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */,
+				23D0307F209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.h */,
+				23D03080209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m */,
 				022F04F8209A9EBB005CC7D5 /* Main.storyboard */,
 				022F04FB209A9EBB005CC7D5 /* Assets.xcassets */,
 				022F04FD209A9EBB005CC7D5 /* LaunchScreen.storyboard */,
 				022F0500209A9EBB005CC7D5 /* Info.plist */,
 				022F0501209A9EBB005CC7D5 /* main.m */,
+				02DAE49A209C680100629A39 /* MyViewController.h */,
+				02DAE49B209C680100629A39 /* MyViewController.m */,
+				02DAE49C209C680100629A39 /* MyViewController.xib */,
 			);
 			path = JCPopupContainerViewDemo;
+			sourceTree = "<group>";
+		};
+		46AD9275BBA7424AD63A0BFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9187507DB798A32E50F75F4 /* libPods-JCPopupContainerViewDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA5C011C8D43C897A78D5287 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D1CE6B04A85C2F772222100 /* Pods-JCPopupContainerViewDemo.debug.xcconfig */,
+				417971E54E2491BA2A9B240D /* Pods-JCPopupContainerViewDemo.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,9 +125,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 022F0505209A9EBB005CC7D5 /* Build configuration list for PBXNativeTarget "JCPopupContainerViewDemo" */;
 			buildPhases = (
+				887578D755E84EFE87F8D5A3 /* [CP] Check Pods Manifest.lock */,
 				022F04EB209A9EBB005CC7D5 /* Sources */,
 				022F04EC209A9EBB005CC7D5 /* Frameworks */,
 				022F04ED209A9EBB005CC7D5 /* Resources */,
+				E3062884C24B315B9C5F9EBA /* [CP] Embed Pods Frameworks */,
+				A411BB037EEFA7E16FDCFAAA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,11 +181,63 @@
 			files = (
 				022F04FF209A9EBB005CC7D5 /* LaunchScreen.storyboard in Resources */,
 				022F04FC209A9EBB005CC7D5 /* Assets.xcassets in Resources */,
+				02DAE49E209C680100629A39 /* MyViewController.xib in Resources */,
 				022F04FA209A9EBB005CC7D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		887578D755E84EFE87F8D5A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JCPopupContainerViewDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A411BB037EEFA7E16FDCFAAA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JCPopupContainerViewDemo/Pods-JCPopupContainerViewDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3062884C24B315B9C5F9EBA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JCPopupContainerViewDemo/Pods-JCPopupContainerViewDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		022F04EB209A9EBB005CC7D5 /* Sources */ = {
@@ -144,7 +246,11 @@
 			files = (
 				022F04F7209A9EBB005CC7D5 /* ViewController.m in Sources */,
 				022F0502209A9EBB005CC7D5 /* main.m in Sources */,
+				23D03081209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m in Sources */,
+				23D0307E209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m in Sources */,
 				022F04F4209A9EBB005CC7D5 /* AppDelegate.m in Sources */,
+				022F050A209AA02F005CC7D5 /* JCPopupUtils.m in Sources */,
+				02DAE49D209C680100629A39 /* MyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,11 +382,13 @@
 		};
 		022F0506209A9EBB005CC7D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D1CE6B04A85C2F772222100 /* Pods-JCPopupContainerViewDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48E3LB8PD7;
 				INFOPLIST_FILE = JCPopupContainerViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tv.huajiao.JCPopupContainerViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -290,11 +398,13 @@
 		};
 		022F0507209A9EBB005CC7D5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 417971E54E2491BA2A9B240D /* Pods-JCPopupContainerViewDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 48E3LB8PD7;
 				INFOPLIST_FILE = JCPopupContainerViewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tv.huajiao.JCPopupContainerViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -7,6 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "JCPopupUtils.h"
+#import "MyViewController.h"
+#import <Masonry.h>
+#import "JCPopupUtilsLayoutAndAnimation+DefaultLayout.h"
 
 @interface ViewController ()
 
@@ -16,7 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self.popUtils.layoutAndAnimation setToDefaultLayoutAndAnimation];
+    
+}
+- (IBAction)onClickPopupBtn:(id)sender {
+    MyViewController *controller = [[MyViewController alloc] init];
+    [self poputils_showController:controller];
 }
 
 
