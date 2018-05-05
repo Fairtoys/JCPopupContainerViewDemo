@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface JCPopupUtils : NSObject
 
-@property (nonatomic, strong) JCPopupUtilsLayoutAndAnimation *layoutAndAnimation;//保存显示动画和隐藏动画
+@property (nonatomic, strong) JCPopupUtilsLayoutAndAnimation *layoutAndAnimation;//保存显示动画和隐藏动画,可继承此类来写自定义的布局和动画，然后设置此property, 或者给此类实现分类，来实现自定义布局和动画
 @property (nonatomic, readonly) UIView *containerView;//整个大的容器,填满superView，放subView
 @property (nonatomic, weak, readonly, nullable) __kindof UIView *view;//当前弹出的view
 @property (nonatomic, readonly, nullable) __kindof UIView *superView;//当前的容器SuperView
@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - views
 - (void)showView:(UIView *)view inSuperView:(UIView *)superView;
 - (void)hideView;
-- (void)relayout;
+- (void)relayout;//会调用layoutAndAnimation中的layoutblock来重新布局
 
 @end
 

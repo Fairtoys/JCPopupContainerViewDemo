@@ -34,5 +34,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        if (size.width > size.height) {
+            [self.popUtils.layoutAndAnimation setToHorizontalLayoutAndAnimation];
+        }else{
+            [self.popUtils.layoutAndAnimation setToDefaultLayoutAndAnimation];
+        }
+        [self.popUtils relayout];
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        
+    }];
+}
+
 
 @end
