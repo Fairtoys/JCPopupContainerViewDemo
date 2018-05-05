@@ -9,6 +9,7 @@
 #import "JCPopupUtils.h"
 #import <Masonry.h>
 #import <objc/runtime.h>
+#import "JCPopupUtilsLayoutAndAnimation.h"
 
 
 @interface JCPopContainerView : UIView
@@ -196,32 +197,16 @@
     return _popUtils;
 }
 
-- (void)poputils_setWillShowAnimation:(JCPopupUtilsBlock)animations{
-    self.popUtils.layoutAndAnimation.animationForShow.willAnimations = animations;
-}
-
-- (void)poputils_setShowAnimation:(JCPopupUtilsBlock)animations{
-    self.popUtils.layoutAndAnimation.animationForShow.animations = animations;
-}
-
-- (void)poputils_setWillHideAnimation:(JCPopupUtilsBlock)animations{
-    self.popUtils.layoutAndAnimation.animationForHide.willAnimations = animations;
-}
-
-- (void)poputils_setHideAnimation:(JCPopupUtilsBlock)animations{
-    self.popUtils.layoutAndAnimation.animationForHide.animations = animations;
-}
-
-- (void)poputils_setLayout:(JCPopupUtilsBlock)layout{
-    self.popUtils.layoutAndAnimation.layoutBlock = layout;
-}
-
 - (void)poputils_showView:(UIView *)view{
     [self.popUtils showView:view inSuperView:self];
 }
 
 - (void)poputils_hideView{
     [self.popUtils hideView];
+}
+
+- (void)poputils_relayout{
+    [self.popUtils relayout];
 }
 
 @end
@@ -231,24 +216,6 @@
 - (JCPopupUtils *)popUtils{
     return self.view.popUtils;
 }
-- (void)poputils_setWillShowAnimation:(JCPopupUtilsBlock)animations{
-    self.popUtils.layoutAndAnimation.animationForShow.willAnimations = animations;
-}
-- (void)poputils_setShowAnimation:(JCPopupUtilsBlock)animations{
-    self.popUtils.layoutAndAnimation.animationForShow.animations = animations;
-}
-- (void)poputils_setWillHideAnimation:(JCPopupUtilsBlock)animations{
-    self.popUtils.layoutAndAnimation.animationForHide.willAnimations = animations;
-}
-
-- (void)poputils_setHideAnimation:(JCPopupUtilsBlock)animations{
-    self.popUtils.layoutAndAnimation.animationForHide.animations = animations;
-}
-
-- (void)poputils_setLayout:(JCPopupUtilsBlock)layout{
-    self.popUtils.layoutAndAnimation.layoutBlock = layout;
-}
-
 - (void)poputils_showController:(UIViewController *)controller{
     __weak typeof(self) weakSelf = self;
     [self.popUtils setViewWillShowInnerBlock:^{
@@ -270,6 +237,11 @@
 - (void)poputils_hideController{
     [self.view poputils_hideView];
 }
+
+- (void)poputils_relayout{
+    [self.view poputils_relayout];
+}
+
 
 @end
 

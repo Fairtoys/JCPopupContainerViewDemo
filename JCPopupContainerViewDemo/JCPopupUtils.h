@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JCPopupUtilsLayoutAndAnimation.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@class JCPopupUtilsLayoutAndAnimation;
 /**
  弹出框工具
  */
@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (JCPopupUtils)
 
+@property (nonatomic, strong) JCPopupUtils *popUtils;
 /**
  在此视图上显示一个View
 
@@ -45,31 +46,33 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)poputils_hideView;
 
-#pragma mark - view animations and layout block start
-@property (nonatomic, strong) JCPopupUtils *popUtils;
-- (void)poputils_setWillShowAnimation:(nullable JCPopupUtilsBlock)animations;
-- (void)poputils_setShowAnimation:(nullable JCPopupUtilsBlock)animations;
-- (void)poputils_setWillHideAnimation:(nullable JCPopupUtilsBlock)animations;
-- (void)poputils_setHideAnimation:(nullable JCPopupUtilsBlock)animations;
-- (void)poputils_setLayout:(nullable JCPopupUtilsBlock)layout;
-#pragma mark - view animations and layout block end
+/**
+ 重新调用布局回调布局 self.layoutAndAnimation.layoutBlock(self);
+ */
+- (void)poputils_relayout;
 
 @end
 
 @interface UIViewController (JCPopupUtils)
+
+@property (nonatomic, readonly) JCPopupUtils *popUtils;
+/**
+ 在此视图上显示一个Controller
+ 
+ @param controller controller
+ */
 - (void)poputils_showController:(UIViewController *)controller;
+
+/**
+ 隐藏当前显示的controller
+ */
 - (void)poputils_hideController;
 
-#pragma mark - controller animations and layout block start
-@property (nonatomic, readonly) JCPopupUtils *popUtils;
-- (void)poputils_setWillShowAnimation:(nullable JCPopupUtilsBlock)animations;
-- (void)poputils_setShowAnimation:(nullable JCPopupUtilsBlock)animations;
-- (void)poputils_setWillHideAnimation:(nullable JCPopupUtilsBlock)animations;
-- (void)poputils_setHideAnimation:(nullable JCPopupUtilsBlock)animations;
-- (void)poputils_setLayout:(nullable JCPopupUtilsBlock)layout;
-#pragma mark - controller animations and layout block end
+/**
+ 重新调用布局回调布局 self.layoutAndAnimation.layoutBlock(self);
+ */
 
-
+- (void)poputils_relayout;
 @end
 
 

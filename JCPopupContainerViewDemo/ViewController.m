@@ -41,7 +41,7 @@
         }else{
             [self.popUtils.layoutAndAnimation setToDefaultLayoutAndAnimation];
         }
-        [self.popUtils relayout];
+        [self poputils_relayout];
     } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
         
     }];
