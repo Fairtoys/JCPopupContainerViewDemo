@@ -11,6 +11,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
+//typedef NS_OPTIONS(NSUInteger, JCOrientationMask) {
+//    JCOrientationMaskPortrait = 1 << 0,
+//    JCOrientationMaskLandscape = 1 << 1,
+//};
+//typedef NS_OPTIONS(NSUInteger, JCScreenSizeMask) {
+//    JCScreenSizeMaskiPhone4 = 1 << 0,
+//    <#MyEnumValueB#> = 1 << 1,
+//    <#MyEnumValueC#> = 1 << 2,
+//};
 
 /**
  给UIView添加不同状态下的不同布局回调
@@ -45,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface JCViewLayout (OrientationSurport)
+@interface JCViewLayout (OrientationSupport)
 
 /**
  根据当前的横竖屏来设置横竖屏下的布局
@@ -63,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) dispatch_block_t layoutForLandscape;
 @end
 
-@interface UIView (JCLayoutForOrientation)
+@interface UIView (JCMultipleLayoutSupport)
 
 @property (nonatomic, strong) JCViewLayout * jclayout_viewLayout;
 

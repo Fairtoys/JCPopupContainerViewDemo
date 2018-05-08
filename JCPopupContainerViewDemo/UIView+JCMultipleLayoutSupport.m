@@ -6,7 +6,7 @@
 //  Copyright © 2018年 huajiao. All rights reserved.
 //
 
-#import "UIView+JCLayoutForOrientation.h"
+#import "UIView+JCMultipleLayoutSupport.h"
 #import <objc/runtime.h>
 
 @interface JCViewLayout ()
@@ -80,7 +80,7 @@
 
 @end
 
-@implementation JCViewLayout (OrientationSurport)
+@implementation JCViewLayout (OrientationSupport)
 
 - (void)setLayoutForPortrait:(dispatch_block_t)layoutForPortrait{
     [self setLayout:layoutForPortrait forState:@(UIInterfaceOrientationPortrait)];
@@ -110,7 +110,7 @@
 @end
 
 
-@implementation UIView (JCLayoutForOrientation)
+@implementation UIView (JCMultipleLayoutSupport)
 - (void)setJclayout_viewLayout:(JCViewLayout *)jclayout_viewLayout{
     objc_setAssociatedObject(self, @selector(jclayout_viewLayout), jclayout_viewLayout, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }

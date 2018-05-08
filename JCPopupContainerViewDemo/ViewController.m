@@ -14,7 +14,8 @@
 #import "JCPopupUtilsLayoutAndAnimationFromBottom.h"
 #import "JCPopupUtilsLayoutAndAnimationFromRight.h"
 #import "JCPopupUtilsLayoutAndAnimationSystemAlert.h"
-#import "UIView+JCLayoutForOrientation.h"
+#import "UIView+JCMultipleLayoutSupport.h"
+#import "UIDevice+ScreenSize.h"
 
 
 @interface ViewController ()
@@ -37,7 +38,7 @@
         weakSelf.constraintY.constant = -100;
     }];
     [self.popBt.jclayout_viewLayout setLayoutForPortrait:^{
-        weakSelf.constraintY.constant = -200;
+        weakSelf.constraintY.constant = -100;
     }];
     [self.popBt.jclayout_viewLayout setLayoutForLandscape:^{
         weakSelf.constraintY.constant = 200;
@@ -53,14 +54,16 @@
     JCPopupUtilsLayoutAndAnimationSystemAlert *layoutAnimationAlert = [[JCPopupUtilsLayoutAndAnimationSystemAlert alloc] init];
 //    self.popUtils.layoutAndAnimationForPortrait = layoutAnimationAlert;
     self.popUtils.layoutAndAnimationNormal = layoutAnimationAlert;
-//    JCPopupUtilsLayoutAndAnimationFromRight *layoutAndAnimationRight = [[JCPopupUtilsLayoutAndAnimationFromRight alloc] init];
-//    layoutAndAnimationRight.width = 200;
-//    self.popUtils.layoutAndAnimationForLandscape = layoutAndAnimationRight;
+    JCPopupUtilsLayoutAndAnimationFromRight *layoutAndAnimationRight = [[JCPopupUtilsLayoutAndAnimationFromRight alloc] init];
+    layoutAndAnimationRight.width = 200;
+    self.popUtils.layoutAndAnimationForLandscape = layoutAndAnimationRight;
 }
 
 - (IBAction)onClickPopupBtn:(id)sender {
-    MyViewController *controller = [[MyViewController alloc] init];
-    [self poputils_showController:controller];
+//    MyViewController *controller = [[MyViewController alloc] init];
+//    [self poputils_showController:controller];
+    NSInteger state = stateWithOrientationAndScreenSize(JCInterfaceOrientationLandscape, JCScreenSize667x375);
+    NSLog(@"state %@", @(state));
 }
 
 

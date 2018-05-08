@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  横竖屏的支持
  */
-@interface JCPopupUtils (OrientationSurport)
+@interface JCPopupUtils (OrientationSupport)
 - (void)setStateForCurrentOrientation;//判断当前的屏幕方向，来设置对应的布局
 - (void)setLayoutAndAnimationForLandscape:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation;
 - (void)setLayoutAndAnimationForPortrait:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation;

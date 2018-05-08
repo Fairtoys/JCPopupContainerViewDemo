@@ -227,7 +227,7 @@
 
 @end
 
-@implementation JCPopupUtils (OrientationSurport)
+@implementation JCPopupUtils (OrientationSupport)
 
 - (void)setLayoutAndAnimationForPortrait:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation{
     [self setLayoutAndAnimation:layoutAndAnimation forState:@(UIInterfaceOrientationPortrait)];

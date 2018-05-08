@@ -17,6 +17,7 @@
     if (self) {
         __weak typeof(self) weakSelf = self;
         [self setLayoutBlock:^(__kindof JCPopupUtils * _Nonnull thePopUtils) {
+            thePopUtils.containerView.backgroundColor = [UIColor yellowColor];
             [thePopUtils.view mas_remakeConstraints:^(MASConstraintMaker *make) {
                 
                 make.top.bottom.trailing.equalTo(thePopUtils.containerView);
