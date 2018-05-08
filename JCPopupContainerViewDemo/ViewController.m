@@ -37,12 +37,7 @@
     [self.popBt.jclayout_viewLayout setLayoutNormal:^{
         weakSelf.constraintY.constant = -100;
     }];
-    [self.popBt.jclayout_viewLayout setLayoutForPortrait:^{
-        weakSelf.constraintY.constant = -100;
-    }];
-    [self.popBt.jclayout_viewLayout setLayoutForLandscape:^{
-        weakSelf.constraintY.constant = 200;
-    }];
+    
 }
 
 - (void)setupPopupUtils{
@@ -56,14 +51,21 @@
     self.popUtils.layoutAndAnimationNormal = layoutAnimationAlert;
     JCPopupUtilsLayoutAndAnimationFromRight *layoutAndAnimationRight = [[JCPopupUtilsLayoutAndAnimationFromRight alloc] init];
     layoutAndAnimationRight.width = 200;
-    self.popUtils.layoutAndAnimationForLandscape = layoutAndAnimationRight;
+    [self.popUtils setLayoutAndAnimation:layoutAndAnimationRight forState:@(1)];
 }
 
 - (IBAction)onClickPopupBtn:(id)sender {
 //    MyViewController *controller = [[MyViewController alloc] init];
 //    [self poputils_showController:controller];
-    NSInteger state = stateWithOrientationAndScreenSize(JCInterfaceOrientationLandscape, JCScreenSize667x375);
-    NSLog(@"state %@", @(state));
+//    for (JCInterfaceOrientation i = JCInterfaceOrientationPortrait; i <= JCInterfaceOrientationLandscape; i <<= 1) {
+//        for (JCScreenSize j = JCScreenSize480x320; j <= JCScreenSize812x375; j <<= 1) {
+//            NSInteger state = stateWithOrientationAndScreenSize(i, j);
+//            NSLog(@"state %@", @(state));
+//        }
+//    }
+//    for (NSUInteger i = JCScreenSize480x320; i <= JCScreenSize812x375; i++ ) {
+//        NSLog(@"i<<1:%@", @((i << 1) + 0));
+//    }
 }
 
 

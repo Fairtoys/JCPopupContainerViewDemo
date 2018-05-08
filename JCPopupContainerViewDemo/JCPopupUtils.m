@@ -10,6 +10,7 @@
 #import <Masonry.h>
 #import <objc/runtime.h>
 #import "JCPopupUtilsLayoutAndAnimation.h"
+#import "UIDevice+ScreenSize.h"
 
 @interface JCPopupUtils () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) NSMutableDictionary <id <NSCopying>, JCPopupUtilsLayoutAndAnimation *> *layoutAnimationsForState;
@@ -229,29 +230,55 @@
 
 @implementation JCPopupUtils (OrientationSupport)
 
-- (void)setLayoutAndAnimationForPortrait:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation{
-    [self setLayoutAndAnimation:layoutAndAnimation forState:@(UIInterfaceOrientationPortrait)];
-}
-
-- (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForPortrait{
-    return [self layoutAndAnimationForState:@(UIInterfaceOrientationPortrait)];
-}
-
-- (void)setLayoutAndAnimationForLandscape:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation{
-    [self setLayoutAndAnimation:layoutAndAnimation forState:@(UIInterfaceOrientationLandscapeLeft)];
-}
-
-- (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForLandscape{
-    return [self layoutAndAnimationForState:@(UIInterfaceOrientationLandscapeLeft)];
-}
-
 - (void)setStateForCurrentOrientation{
-    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
-        self.state = @(UIInterfaceOrientationLandscapeLeft);
-    }else{
-        self.state = @(UIInterfaceOrientationPortrait);
-    }
+    self.state = @(stateForCurrentOrientationAndCurrentScreenSize());
 }
+
+- (void)setLayoutAndAnimation:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forOrientationAndScreenSize:(NSInteger)orientationAndScreenSize{
+    if (JCInterfaceOrientationPortrait & orientationAndScreenSize) {
+        if (JCScreenSize480x320 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize480x320)];
+        }
+        if (JCScreenSize568x320 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize568x320)];
+        }
+        if (JCScreenSize667x375 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize667x375)];
+        }
+
+        if (JCScreenSize736x414 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize736x414)];
+        }
+
+        if (JCScreenSize812x375 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize812x375)];
+        }
+    }
+    if (JCInterfaceOrientationLandscape & orientationAndScreenSize) {
+        if (JCScreenSize480x320 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize480x320)];
+        }
+        
+        if (JCScreenSize568x320 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize568x320)];
+        }
+        
+        if (JCScreenSize667x375 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize667x375)];
+        }
+        
+        if (JCScreenSize736x414 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize736x414)];
+        }
+        
+        if (JCScreenSize812x375 & orientationAndScreenSize) {
+            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize812x375)];
+        }
+
+    }
+    
+}
+
 @end
 
 

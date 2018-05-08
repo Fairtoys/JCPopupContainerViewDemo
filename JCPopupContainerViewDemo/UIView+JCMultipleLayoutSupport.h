@@ -10,17 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
-//typedef NS_OPTIONS(NSUInteger, JCOrientationMask) {
-//    JCOrientationMaskPortrait = 1 << 0,
-//    JCOrientationMaskLandscape = 1 << 1,
-//};
-//typedef NS_OPTIONS(NSUInteger, JCScreenSizeMask) {
-//    JCScreenSizeMaskiPhone4 = 1 << 0,
-//    <#MyEnumValueB#> = 1 << 1,
-//    <#MyEnumValueC#> = 1 << 2,
-//};
-
 /**
  给UIView添加不同状态下的不同布局回调
  */
@@ -60,16 +49,6 @@ NS_ASSUME_NONNULL_BEGIN
  根据当前的横竖屏来设置横竖屏下的布局
  */
 - (void)setStateForCurrentOrientation;
-
-/**
- 竖屏下的布局
- */
-@property (nonatomic, copy, nullable) dispatch_block_t layoutForPortrait;
-
-/**
- 横屏下的布局
- */
-@property (nonatomic, copy, nullable) dispatch_block_t layoutForLandscape;
 @end
 
 @interface UIView (JCMultipleLayoutSupport)
@@ -87,22 +66,6 @@ NS_ASSUME_NONNULL_BEGIN
  调用 自己的setStateForCurrentOrientation， 并遍历子view，也调用setStateForCurrentOrientation
  */
 - (void)jclayout_enumerateSetStateForCurrentOrientation;
-
-
-/**
- self.jclayout_viewLayout.layoutForPortrait = layoutForPortrait;
-
- @param layoutForPortrait 竖屏布局
- */
-- (void)jclayout_setLayoutForPortrait:(nullable dispatch_block_t)layoutForPortrait;
-
-
-/**
- self.jclayout_viewLayout.layoutForLandscape = layoutForLandscape;
-
- @param layoutForLandscape 横屏布局
- */
-- (void)jclayout_setLayoutForLandscape:(nullable dispatch_block_t)layoutForLandscape;
 
 @end
 

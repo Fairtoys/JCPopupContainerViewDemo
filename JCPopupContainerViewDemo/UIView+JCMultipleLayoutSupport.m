@@ -8,6 +8,7 @@
 
 #import "UIView+JCMultipleLayoutSupport.h"
 #import <objc/runtime.h>
+#import "UIDevice+ScreenSize.h"
 
 @interface JCViewLayout ()
 
@@ -76,34 +77,12 @@
     }
 }
 
-
-
 @end
 
 @implementation JCViewLayout (OrientationSupport)
 
-- (void)setLayoutForPortrait:(dispatch_block_t)layoutForPortrait{
-    [self setLayout:layoutForPortrait forState:@(UIInterfaceOrientationPortrait)];
-}
-
-- (dispatch_block_t)layoutForPortrait{
-    return [self layoutForState:@(UIInterfaceOrientationPortrait)];
-}
-
-- (void)setLayoutForLandscape:(dispatch_block_t)layoutForLandscape{
-    [self setLayout:layoutForLandscape forState:@(UIInterfaceOrientationLandscapeLeft)];
-}
-
-- (dispatch_block_t)layoutForLandscape{
-    return [self layoutForState:@(UIInterfaceOrientationLandscapeLeft)];
-}
-
 - (void)setStateForCurrentOrientation{
-    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
-        self.state = @(UIInterfaceOrientationLandscapeLeft);
-    }else{
-        self.state = @(UIInterfaceOrientationPortrait);
-    }
+    self.state = @(stateForCurrentOrientationAndCurrentScreenSize());
 }
 
 
@@ -139,11 +118,5 @@
     }
 }
 
-- (void)jclayout_setLayoutForPortrait:(dispatch_block_t)layoutForPortrait{
-    self.jclayout_viewLayout.layoutForPortrait = layoutForPortrait;
-}
-- (void)jclayout_setLayoutForLandscape:(dispatch_block_t)layoutForLandscape{
-    self.jclayout_viewLayout.layoutForLandscape = layoutForLandscape;
-}
 
 @end
