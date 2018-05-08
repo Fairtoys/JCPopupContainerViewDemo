@@ -11,29 +11,9 @@
 #import <objc/runtime.h>
 #import "JCPopupUtilsLayoutAndAnimation.h"
 
-
-@interface JCPopContainerView : UIView
-
-@end
-@implementation JCPopContainerView
-
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    for (UIView *view in self.subviews) {
-        CGPoint pointInView = [self convertPoint:point toView:view];
-        if ([view pointInside:pointInView withEvent:event]) {
-            return view;
-        }
-    }
-    return [super hitTest:point withEvent:event];
-}
-
-@end
-
-
-
 @interface JCPopupUtils () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UIView *containerView;//整个大的容器
-
+@property (nonatomic, strong) UIView *backgroundView;//当view的大小不填满整个containerView时，用来设置背景色
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;//点击事件，点击背景
 
 @property (nonatomic, weak, nullable) __kindof UIView *view;//当前弹出的view
@@ -42,19 +22,30 @@
 @property (nonatomic, copy, nullable) dispatch_block_t viewDidShowInnerBlock;
 @property (nonatomic, copy, nullable) dispatch_block_t viewWillHideInnerBlock;
 @property (nonatomic, copy, nullable) dispatch_block_t viewDidHideInnerBlock;
-
+- (void)relayout;//会调用layoutAndAnimation中的layoutblock来重新布局
+@property (nonatomic, strong) __kindof JCPopupUtilsLayoutAndAnimation *layoutAndAnimation;//保存显示动画和隐藏动画,可继承此类来写自定义的布局和动画，然后设置此property, 或者给此类实现分类，来实现自定义布局和动画
 @end
-
 
 @implementation JCPopupUtils
 
+@synthesize layoutAndAnimation = _layoutAndAnimation, layoutAndAnimationForPortrait = _layoutAndAnimationForPortrait, layoutAndAnimationForLandscape = _layoutAndAnimationForLandscape;
+
 - (UIView *)containerView{
     if (!_containerView) {
-        _containerView = [[JCPopContainerView alloc] init];
+        _containerView = [[UIView alloc] init];
+        [_containerView addSubview:self.backgroundView];
         [_containerView addGestureRecognizer:self.tapGesture];
     }
     return _containerView;
 }
+
+- (UIView *)backgroundView{
+    if (!_backgroundView) {
+        _backgroundView = [[UIView alloc] init];
+    }
+    return _backgroundView;
+}
+
 - (UIView *)superView{
     return _containerView.superview;
 }
@@ -77,11 +68,45 @@
     return YES;
 }
 
+- (void)setLayoutAndAnimation:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation{
+    if (_layoutAndAnimation == layoutAndAnimation) {
+        return ;
+    }
+    _layoutAndAnimation = layoutAndAnimation;
+    
+    [self relayout];
+}
+
 - (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation{
     if (!_layoutAndAnimation) {
-        _layoutAndAnimation = [[JCPopupUtilsLayoutAndAnimation alloc] init];
+        [self setLayoutAndAnimation:self.layoutAndAnimationForPortrait];
     }
     return _layoutAndAnimation;
+}
+
+- (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForPortrait{
+    if (!_layoutAndAnimationForPortrait) {
+        _layoutAndAnimationForPortrait = [[JCPopupUtilsLayoutAndAnimation alloc] init];
+    }
+    return _layoutAndAnimationForPortrait;
+}
+
+- (void)setLayoutAndAnimationForPortrait:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForPortrait{
+    if (_layoutAndAnimationForPortrait == layoutAndAnimationForPortrait) {
+        return;
+    }
+    _layoutAndAnimationForPortrait = layoutAndAnimationForPortrait;
+    
+    self.orientation = [UIApplication sharedApplication].statusBarOrientation;
+}
+
+- (void)setLayoutAndAnimationForLandscape:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForLandscape{
+    if (_layoutAndAnimationForLandscape == layoutAndAnimationForLandscape) {
+        return;
+    }
+    _layoutAndAnimationForLandscape = layoutAndAnimationForLandscape;
+    
+    self.orientation = [UIApplication sharedApplication].statusBarOrientation;
 }
 
 - (void)onClickBackgroundView:(UITapGestureRecognizer *)sender{
@@ -174,11 +199,31 @@
 }
 
 - (void)relayout{
-    if (self.layoutAndAnimation.layoutBlock) {
-        self.layoutAndAnimation.layoutBlock(self);
+    if (_view.superview) {
+        if (_layoutAndAnimation.layoutBlock) {
+            _layoutAndAnimation.layoutBlock(self);
+        }
     }
 }
 
+- (void)relayoutUsingCurrentOrientation{
+    self.orientation = [UIApplication sharedApplication].statusBarOrientation;
+}
+
+- (void)setOrientation:(UIInterfaceOrientation)orientation{
+    _orientation = orientation;
+    
+    if (UIInterfaceOrientationIsLandscape(orientation)){
+        self.layoutAndAnimation = self.layoutAndAnimationForLandscape ?: self.layoutAndAnimationForPortrait;
+        return ;
+    }
+    
+    self.layoutAndAnimation = self.layoutAndAnimationForPortrait;
+}
+
+- (BOOL)isViewShowing{
+    return _view.superview;
+}
 
 @end
 
@@ -205,8 +250,8 @@
     [self.popUtils hideView];
 }
 
-- (void)poputils_relayout{
-    [self.popUtils relayout];
+- (void)poputils_relayoutPopupViewUsingCurrentOrientation{
+    [self.popUtils relayoutUsingCurrentOrientation];
 }
 
 @end
@@ -238,8 +283,8 @@
     [self.view poputils_hideView];
 }
 
-- (void)poputils_relayout{
-    [self.view poputils_relayout];
+- (void)poputils_relayoutPopupViewUsingCurrentOrientation{
+    [self.view poputils_relayoutPopupViewUsingCurrentOrientation];
 }
 
 

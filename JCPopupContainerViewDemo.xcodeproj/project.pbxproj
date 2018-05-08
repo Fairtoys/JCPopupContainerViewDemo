@@ -16,6 +16,9 @@
 		022F050A209AA02F005CC7D5 /* JCPopupUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 022F0509209AA02F005CC7D5 /* JCPopupUtils.m */; };
 		02DAE49D209C680100629A39 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE49B209C680100629A39 /* MyViewController.m */; };
 		02DAE49E209C680100629A39 /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DAE49C209C680100629A39 /* MyViewController.xib */; };
+		02DAE4A120A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4A020A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m */; };
+		02DAE4A420A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4A320A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m */; };
+		02DAE4A720A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4A620A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m */; };
 		23D0307E209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */; };
 		23D03081209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D03080209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m */; };
 		DA1536E56CF081B20077B240 /* libPods-JCPopupContainerViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9187507DB798A32E50F75F4 /* libPods-JCPopupContainerViewDemo.a */; };
@@ -37,6 +40,12 @@
 		02DAE49A209C680100629A39 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		02DAE49B209C680100629A39 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		02DAE49C209C680100629A39 /* MyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyViewController.xib; sourceTree = "<group>"; };
+		02DAE49F20A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtilsLayoutAndAnimationFromBottom.h; sourceTree = "<group>"; };
+		02DAE4A020A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtilsLayoutAndAnimationFromBottom.m; sourceTree = "<group>"; };
+		02DAE4A220A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtilsLayoutAndAnimationFromRight.h; sourceTree = "<group>"; };
+		02DAE4A320A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtilsLayoutAndAnimationFromRight.m; sourceTree = "<group>"; };
+		02DAE4A520A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtilsLayoutAndAnimationSystemAlert.h; sourceTree = "<group>"; };
+		02DAE4A620A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtilsLayoutAndAnimationSystemAlert.m; sourceTree = "<group>"; };
 		23D0307C209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtilsLayoutAndAnimation.h; sourceTree = "<group>"; };
 		23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtilsLayoutAndAnimation.m; sourceTree = "<group>"; };
 		23D0307F209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCPopupUtilsLayoutAndAnimation+DefaultLayout.h"; sourceTree = "<group>"; };
@@ -89,6 +98,12 @@
 				23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */,
 				23D0307F209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.h */,
 				23D03080209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m */,
+				02DAE49F20A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.h */,
+				02DAE4A020A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m */,
+				02DAE4A220A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.h */,
+				02DAE4A320A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m */,
+				02DAE4A520A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.h */,
+				02DAE4A620A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m */,
 				022F04F8209A9EBB005CC7D5 /* Main.storyboard */,
 				022F04FB209A9EBB005CC7D5 /* Assets.xcassets */,
 				022F04FD209A9EBB005CC7D5 /* LaunchScreen.storyboard */,
@@ -245,11 +260,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				022F04F7209A9EBB005CC7D5 /* ViewController.m in Sources */,
+				02DAE4A120A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m in Sources */,
+				02DAE4A420A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m in Sources */,
 				022F0502209A9EBB005CC7D5 /* main.m in Sources */,
 				23D03081209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m in Sources */,
 				23D0307E209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m in Sources */,
 				022F04F4209A9EBB005CC7D5 /* AppDelegate.m in Sources */,
 				022F050A209AA02F005CC7D5 /* JCPopupUtils.m in Sources */,
+				02DAE4A720A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m in Sources */,
 				02DAE49D209C680100629A39 /* MyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,8 +23,8 @@ typedef void(^JCPopupUtilsBlock)(__kindof JCPopupUtils *thePopUtils);
 
 @interface JCPopupUtilsLayoutAndAnimation : NSObject
 
-@property (nonatomic, strong) JCPopupUtilsAnimation *animationForShow;
-@property (nonatomic, strong) JCPopupUtilsAnimation *animationForHide;
+@property (nonatomic, strong) __kindof JCPopupUtilsAnimation *animationForShow;
+@property (nonatomic, strong) __kindof JCPopupUtilsAnimation *animationForHide;
 @property (nonatomic, copy, nullable) JCPopupUtilsBlock layoutBlock;//布局的回调，在show的时候会调用，在旋转的时候需要在controller中手动调用此回调
 @end
 
