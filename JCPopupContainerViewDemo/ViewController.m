@@ -14,9 +14,12 @@
 #import "JCPopupUtilsLayoutAndAnimationFromBottom.h"
 #import "JCPopupUtilsLayoutAndAnimationFromRight.h"
 #import "JCPopupUtilsLayoutAndAnimationSystemAlert.h"
+#import "UIView+JCLayoutForOrientation.h"
 
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintY;
+@property (weak, nonatomic) IBOutlet UIButton *popBt;
 
 @end
 
@@ -24,7 +27,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupPopBtnLayouts];
     [self setupPopupUtils];
+}
+
+- (void)setupPopBtnLayouts{
+    __weak typeof(self) weakSelf = self;
+    [self.popBt.jclayout_viewLayout setLayoutNormal:^{
+        weakSelf.constraintY.constant = -100;
+    }];
+    [self.popBt.jclayout_viewLayout setLayoutForPortrait:^{
+        weakSelf.constraintY.constant = -200;
+    }];
+    [self.popBt.jclayout_viewLayout setLayoutForLandscape:^{
+        weakSelf.constraintY.constant = 200;
+    }];
 }
 
 - (void)setupPopupUtils{
@@ -32,14 +49,13 @@
 //    JCPopupUtilsLayoutAndAnimationFromBottom *layoutAndAnimation = [[JCPopupUtilsLayoutAndAnimationFromBottom alloc] init];
 //    layoutAndAnimation.height = 300;
 //    self.popUtils.layoutAndAnimationForPortrait = layoutAndAnimation;
-
+    
     JCPopupUtilsLayoutAndAnimationSystemAlert *layoutAnimationAlert = [[JCPopupUtilsLayoutAndAnimationSystemAlert alloc] init];
-    self.popUtils.layoutAndAnimationForPortrait = layoutAnimationAlert;
-    
-    JCPopupUtilsLayoutAndAnimationFromRight *layoutAndAnimationRight = [[JCPopupUtilsLayoutAndAnimationFromRight alloc] init];
-    layoutAndAnimationRight.width = 200;
-    self.popUtils.layoutAndAnimationForLandscape = layoutAndAnimationRight;
-    
+//    self.popUtils.layoutAndAnimationForPortrait = layoutAnimationAlert;
+    self.popUtils.layoutAndAnimationNormal = layoutAnimationAlert;
+//    JCPopupUtilsLayoutAndAnimationFromRight *layoutAndAnimationRight = [[JCPopupUtilsLayoutAndAnimationFromRight alloc] init];
+//    layoutAndAnimationRight.width = 200;
+//    self.popUtils.layoutAndAnimationForLandscape = layoutAndAnimationRight;
 }
 
 - (IBAction)onClickPopupBtn:(id)sender {
@@ -55,10 +71,14 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        [self poputils_relayoutPopupViewUsingCurrentOrientation];
+        [self poputils_setStateForCurrentOrientation];
+        [self.view jclayout_enumerateSetStateForCurrentOrientation];
     } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        
     }];
+}
+
+- (BOOL)shouldAutorotate{
+    return !self.popUtils.isViewShowing;
 }
 
 

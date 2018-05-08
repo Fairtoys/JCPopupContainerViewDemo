@@ -15,27 +15,54 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface JCPopupUtils : NSObject
 
-@property (nonatomic, assign) UIInterfaceOrientation orientation;//设置orientation后，会设置相应的布局和动画，如果当前已经显示了该view，则会重新layout
+#pragma mark - layoutAndAnimations
+/**
+ 在不同的state设置不同的布局，当设置state时，会根据该状态去取相应的布局类
 
-@property (nonatomic, strong) __kindof JCPopupUtilsLayoutAndAnimation *layoutAndAnimationForPortrait;//保存显示动画和隐藏动画,可继承此类来写自定义的布局和动画，然后设置此property, 或者给此类实现分类，来实现自定义布局和动画, 竖屏布局，如果横屏布局没有设置的话，则会使用竖屏布局来布局
+ @param layoutAndAnimation 布局和动画类
+ @param state 对应的状态
+ */
+- (void)setLayoutAndAnimation:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forState:(id <NSCopying>)state;
 
-@property (nonatomic, strong, nullable) __kindof JCPopupUtilsLayoutAndAnimation *layoutAndAnimationForLandscape;//横屏布局，没有的话用竖屏布局来代替
+/**
+ 获取对应的状态下的 LayoutAnimation
 
+ @param state 状态
+ @return JCPopupUtilsLayoutAndAnimation
+ */
+- (nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForState:(id <NSCopying>)state;
+@property (nonatomic, strong) id <NSCopying> state;//当前状态，设置此状态有可能会重新调用layout
+
+@property (nonatomic, strong, nullable) JCPopupUtilsLayoutAndAnimation *layoutAndAnimationNormal;//如果对应的state下的JCPopupUtilsLayoutAndAnimation都不存在的话，那么会使用此layout来做默认的布局
+
+#pragma mark - views
 @property (nonatomic, readonly) UIView *containerView;//整个大的容器,填满superView，放subView
 @property (nonatomic, readonly) UIView *backgroundView;//当view的大小不填满整个containerView时，用来设置背景色
 @property (nonatomic, weak, readonly, nullable) __kindof UIView *view;//当前弹出的view
 @property (nonatomic, readonly, nullable) __kindof UIView *superView;//当前的容器SuperView
 @property (nonatomic, readonly, getter = isViewShowing) BOOL viewShowing;//当前是否正在显示中
 
-
+#pragma mark - callbacks
 @property (nonatomic, copy, nullable) dispatch_block_t viewWillShowBlock;
 @property (nonatomic, copy, nullable) dispatch_block_t viewDidShowBlock;
 @property (nonatomic, copy, nullable) dispatch_block_t viewWillHideBlock;
 @property (nonatomic, copy, nullable) dispatch_block_t viewDidHideBlock;
-#pragma mark - views
+
+#pragma mark - views util
 - (void)showView:(UIView *)view inSuperView:(UIView *)superView;
 - (void)hideView;
-- (void)relayoutUsingCurrentOrientation;//判断当前的屏幕方向，来设置对应的布局
+- (void)relayout;//强制使用当前的layout来调用布局block
+
+@end
+
+
+/**
+ 横竖屏的支持
+ */
+@interface JCPopupUtils (OrientationSurport)
+- (void)setStateForCurrentOrientation;//判断当前的屏幕方向，来设置对应的布局
+- (void)setLayoutAndAnimationForLandscape:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation;
+- (void)setLayoutAndAnimationForPortrait:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation;
 @end
 
 @interface UIView (JCPopupUtils)
@@ -56,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  [self.popUtils relayoutUsingCurrentOrientation]
  */
-- (void)poputils_relayoutPopupViewUsingCurrentOrientation;
+- (void)poputils_setStateForCurrentOrientation;
 
 @end
 
@@ -78,7 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  [self.popUtils relayoutUsingCurrentOrientation]
  */
-- (void)poputils_relayoutPopupViewUsingCurrentOrientation;
+- (void)poputils_setStateForCurrentOrientation;
 @end
 
 

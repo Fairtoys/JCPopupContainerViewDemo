@@ -33,6 +33,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="constraintY" destination="XgE-Bx-bWn" id="bSh-vC-ddC"/>
+                        <outlet property="popBt" destination="RfB-7q-ocm" id="wdh-nl-6kN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

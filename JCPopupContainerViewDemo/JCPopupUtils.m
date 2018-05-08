@@ -12,6 +12,8 @@
 #import "JCPopupUtilsLayoutAndAnimation.h"
 
 @interface JCPopupUtils () <UIGestureRecognizerDelegate>
+@property (nonatomic, strong) NSMutableDictionary <id <NSCopying>, JCPopupUtilsLayoutAndAnimation *> *layoutAnimationsForState;
+
 @property (nonatomic, strong) UIView *containerView;//整个大的容器
 @property (nonatomic, strong) UIView *backgroundView;//当view的大小不填满整个containerView时，用来设置背景色
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;//点击事件，点击背景
@@ -23,12 +25,57 @@
 @property (nonatomic, copy, nullable) dispatch_block_t viewWillHideInnerBlock;
 @property (nonatomic, copy, nullable) dispatch_block_t viewDidHideInnerBlock;
 - (void)relayout;//会调用layoutAndAnimation中的layoutblock来重新布局
-@property (nonatomic, strong) __kindof JCPopupUtilsLayoutAndAnimation *layoutAndAnimation;//保存显示动画和隐藏动画,可继承此类来写自定义的布局和动画，然后设置此property, 或者给此类实现分类，来实现自定义布局和动画
+@property (nonatomic, weak) JCPopupUtilsLayoutAndAnimation *layoutAndAnimation;//保存显示动画和隐藏动画,可继承此类来写自定义的布局和动画，然后设置此property, 或者给此类实现分类，来实现自定义布局和动画
 @end
 
 @implementation JCPopupUtils
 
-@synthesize layoutAndAnimation = _layoutAndAnimation, layoutAndAnimationForPortrait = _layoutAndAnimationForPortrait, layoutAndAnimationForLandscape = _layoutAndAnimationForLandscape;
+- (NSMutableDictionary<id <NSCopying> ,JCPopupUtilsLayoutAndAnimation *> *)layoutAnimationsForState{
+    if (!_layoutAnimationsForState) {
+        _layoutAnimationsForState = [NSMutableDictionary dictionary];
+    }
+    return _layoutAnimationsForState;
+}
+
+- (void)setLayoutAndAnimationNormal:(JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationNormal{
+    //如果当前状态没有，则设置默认状态
+    if (!_state) {
+        _state = NSStringFromSelector(@selector(layoutAndAnimationNormal));
+    }
+    [self setLayoutAndAnimation:layoutAndAnimationNormal forState:NSStringFromSelector(@selector(layoutAndAnimationNormal))];
+}
+
+- (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationNormal{
+    return [self layoutAndAnimationForState:NSStringFromSelector(_cmd)];
+}
+
+- (void)setLayoutAndAnimation:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forState:(id <NSCopying>)state{
+    self.layoutAnimationsForState[state] = layoutAndAnimation;
+    
+    [self layoutForState:self.state];
+}
+
+- (nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForState:(id <NSCopying>)state{
+    return self.layoutAnimationsForState[state];
+}
+
+- (void)setState:(id<NSCopying>)state{
+    if (_state == state) {
+        return ;
+    }
+    _state = state;
+    
+    [self layoutForState:state];
+}
+
+- (void)layoutForState:(id <NSCopying>)state{
+    JCPopupUtilsLayoutAndAnimation *layoutAndAnimation = self.layoutAnimationsForState[state] ?: self.layoutAndAnimationNormal;
+    if (!layoutAndAnimation) {
+        return ;
+    }
+    
+    self.layoutAndAnimation = layoutAndAnimation;
+}
 
 - (UIView *)containerView{
     if (!_containerView) {
@@ -75,38 +122,6 @@
     _layoutAndAnimation = layoutAndAnimation;
     
     [self relayout];
-}
-
-- (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation{
-    if (!_layoutAndAnimation) {
-        [self setLayoutAndAnimation:self.layoutAndAnimationForPortrait];
-    }
-    return _layoutAndAnimation;
-}
-
-- (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForPortrait{
-    if (!_layoutAndAnimationForPortrait) {
-        _layoutAndAnimationForPortrait = [[JCPopupUtilsLayoutAndAnimation alloc] init];
-    }
-    return _layoutAndAnimationForPortrait;
-}
-
-- (void)setLayoutAndAnimationForPortrait:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForPortrait{
-    if (_layoutAndAnimationForPortrait == layoutAndAnimationForPortrait) {
-        return;
-    }
-    _layoutAndAnimationForPortrait = layoutAndAnimationForPortrait;
-    
-    self.orientation = [UIApplication sharedApplication].statusBarOrientation;
-}
-
-- (void)setLayoutAndAnimationForLandscape:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForLandscape{
-    if (_layoutAndAnimationForLandscape == layoutAndAnimationForLandscape) {
-        return;
-    }
-    _layoutAndAnimationForLandscape = layoutAndAnimationForLandscape;
-    
-    self.orientation = [UIApplication sharedApplication].statusBarOrientation;
 }
 
 - (void)onClickBackgroundView:(UITapGestureRecognizer *)sender{
@@ -206,26 +221,39 @@
     }
 }
 
-- (void)relayoutUsingCurrentOrientation{
-    self.orientation = [UIApplication sharedApplication].statusBarOrientation;
-}
-
-- (void)setOrientation:(UIInterfaceOrientation)orientation{
-    _orientation = orientation;
-    
-    if (UIInterfaceOrientationIsLandscape(orientation)){
-        self.layoutAndAnimation = self.layoutAndAnimationForLandscape ?: self.layoutAndAnimationForPortrait;
-        return ;
-    }
-    
-    self.layoutAndAnimation = self.layoutAndAnimationForPortrait;
-}
-
 - (BOOL)isViewShowing{
     return _view.superview;
 }
 
 @end
+
+@implementation JCPopupUtils (OrientationSurport)
+
+- (void)setLayoutAndAnimationForPortrait:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation{
+    [self setLayoutAndAnimation:layoutAndAnimation forState:@(UIInterfaceOrientationPortrait)];
+}
+
+- (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForPortrait{
+    return [self layoutAndAnimationForState:@(UIInterfaceOrientationPortrait)];
+}
+
+- (void)setLayoutAndAnimationForLandscape:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation{
+    [self setLayoutAndAnimation:layoutAndAnimation forState:@(UIInterfaceOrientationLandscapeLeft)];
+}
+
+- (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForLandscape{
+    return [self layoutAndAnimationForState:@(UIInterfaceOrientationLandscapeLeft)];
+}
+
+- (void)setStateForCurrentOrientation{
+    if (UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        self.state = @(UIInterfaceOrientationLandscapeLeft);
+    }else{
+        self.state = @(UIInterfaceOrientationPortrait);
+    }
+}
+@end
+
 
 @implementation UIView (JCPopupUtils)
 
@@ -250,8 +278,8 @@
     [self.popUtils hideView];
 }
 
-- (void)poputils_relayoutPopupViewUsingCurrentOrientation{
-    [self.popUtils relayoutUsingCurrentOrientation];
+- (void)poputils_setStateForCurrentOrientation{
+    [self.popUtils setStateForCurrentOrientation];
 }
 
 @end
@@ -283,12 +311,8 @@
     [self.view poputils_hideView];
 }
 
-- (void)poputils_relayoutPopupViewUsingCurrentOrientation{
-    [self.view poputils_relayoutPopupViewUsingCurrentOrientation];
+- (void)poputils_setStateForCurrentOrientation{
+    [self.view poputils_setStateForCurrentOrientation];
 }
 
-
 @end
-
-
-
