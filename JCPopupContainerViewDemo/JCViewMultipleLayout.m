@@ -107,4 +107,8 @@
     }
 }
 
+- (void)jclayout_enumerateSetStateInt:(NSInteger)state{
+    [self jclayout_enumerateSetState:@(state)];
+}
+
 @end

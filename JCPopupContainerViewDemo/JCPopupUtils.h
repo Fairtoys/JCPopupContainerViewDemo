@@ -113,7 +113,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) JCPopupUtils *popUtils;
 /**
- 在此视图上显示一个Controller
+ 在此视图上显示一个Controller，如果当前popUtils.isViewShowing 为YES ，则直接return了
  
  @param controller controller
  */
@@ -127,7 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)poputils_hideControllerViewWillHideBlock:(nullable dispatch_block_t)viewWillHideBlock viewDidHideBlock:(nullable dispatch_block_t)viewDidHideBlock;
 
 /**
- 显示新的view之前，先隐藏当前正在显示的view
+ 显示新的view之前，会先去隐藏当前正在显示的view
  
  @param controller 要显示的新的view
  */

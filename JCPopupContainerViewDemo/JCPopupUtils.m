@@ -326,6 +326,9 @@
 }
 
 - (void)poputils_showController:(UIViewController *)controller viewWillShowBlock:(dispatch_block_t)viewWillShowBlock viewDidShowBlock:(dispatch_block_t)viewDidShowBlock{
+    if (self.popUtils.isViewShowing) {
+        return ;
+    }
     __weak typeof(self) weakSelf = self;
     [self.popUtils setViewWillShowInnerBlock:^{
         [weakSelf addChildViewController:controller];

@@ -56,6 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param state 状态
  */
 - (void)jclayout_enumerateSetState:(id <NSCopying>)state;
+- (void)jclayout_enumerateSetStateInt:(NSInteger)state;
 
 
 @end
