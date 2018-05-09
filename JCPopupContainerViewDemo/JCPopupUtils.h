@@ -50,10 +50,36 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) dispatch_block_t viewDidHideBlock;
 
 #pragma mark - views util
-- (void)showView:(UIView *)view inSuperView:(UIView *)superView;
-- (void)hideView;
-- (void)relayout;//强制使用当前的layout来调用布局block
 
+/**
+ 显示新的view,如果当前已经有一个view在显示中了，则直接return
+
+ @param view 要显示的view
+ @param superView 要显示到哪个容器中
+ @param viewWillShowBlock 将要显示的回调
+ @param viewDidShowBlock 显示后的回调
+ */
+- (void)showView:(UIView *)view inSuperView:(UIView *)superView viewWillShowBlock:(nullable dispatch_block_t)viewWillShowBlock viewDidShowBlock:(nullable dispatch_block_t)viewDidShowBlock;
+- (void)showView:(UIView *)view inSuperView:(UIView *)superView;
+
+
+/**
+ 隐藏当前已显示的视图，如果当前没有视图在显示中，则直接return
+
+ @param viewWillHideBlock 将要隐藏的回调
+ @param viewDidHideBlock 隐藏后的回调
+ */
+- (void)hideViewWillHideBlock:(nullable dispatch_block_t)viewWillHideBlock viewDidHideBlock:(nullable dispatch_block_t)viewDidHideBlock;
+- (void)hideView;
+
+/**
+显示新的view之前，先隐藏当前正在显示的view
+
+@param view 要显示的新的view
+*/
+- (void)hideLastViewAndShowView:(UIView *)view inSuperView:(UIView *)superView;
+
+- (void)relayout;//强制使用当前的layout来调用布局block
 @end
 
 @interface UIView (JCPopupUtils)
@@ -65,11 +91,21 @@ NS_ASSUME_NONNULL_BEGIN
  @param view view
  */
 - (void)poputils_showView:(UIView *)view;
+- (void)poputils_showView:(UIView *)view viewWillShowBlock:(nullable dispatch_block_t)viewWillShowBlock viewDidShowBlock:(nullable dispatch_block_t)viewDidShowBlock;
 
 /**
  隐藏当前显示的view
  */
 - (void)poputils_hideView;
+- (void)poputils_hideViewWillHideBlock:(nullable dispatch_block_t)viewWillHideBlock viewDidHideBlock:(nullable dispatch_block_t)viewDidHideBlock;
+
+
+/**
+ 显示新的view之前，先隐藏当前正在显示的view
+
+ @param view 要显示的新的view
+ */
+- (void)poputils_hideLastViewAndShowView:(UIView *)view;
 
 @end
 
@@ -82,12 +118,20 @@ NS_ASSUME_NONNULL_BEGIN
  @param controller controller
  */
 - (void)poputils_showController:(UIViewController *)controller;
+- (void)poputils_showController:(UIViewController *)controller viewWillShowBlock:(nullable dispatch_block_t)viewWillShowBlock viewDidShowBlock:(nullable dispatch_block_t)viewDidShowBlock;
 
 /**
  隐藏当前显示的controller
  */
 - (void)poputils_hideController;
+- (void)poputils_hideControllerViewWillHideBlock:(nullable dispatch_block_t)viewWillHideBlock viewDidHideBlock:(nullable dispatch_block_t)viewDidHideBlock;
 
+/**
+ 显示新的view之前，先隐藏当前正在显示的view
+ 
+ @param controller 要显示的新的view
+ */
+- (void)poputils_hideLastViewAndShowController:(UIViewController *)controller;
 @end
 
 

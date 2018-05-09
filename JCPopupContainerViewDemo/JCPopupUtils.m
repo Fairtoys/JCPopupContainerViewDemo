@@ -135,9 +135,18 @@
     [self hideView];
 }
 
-- (void)showView:(UIView *)view inSuperView:(UIView *)superView{
+- (void)showView:(UIView *)view inSuperView:(UIView *)superView viewWillShowBlock:(nullable dispatch_block_t)viewWillShowBlock viewDidShowBlock:(nullable dispatch_block_t)viewDidShowBlock{
+    
+    if (self.isViewShowing) {
+        return ;
+    }
+    
     if (self.viewWillShowInnerBlock) {
         self.viewWillShowInnerBlock();
+    }
+    
+    if (viewWillShowBlock) {
+        viewWillShowBlock();
     }
     if (self.viewWillShowBlock) {
         self.viewWillShowBlock();
@@ -173,18 +182,33 @@
         if (self.viewDidShowInnerBlock) {
             self.viewDidShowInnerBlock();
         }
+        if (viewDidShowBlock) {
+            viewDidShowBlock();
+        }
         if (self.viewDidShowBlock) {
             self.viewDidShowBlock();
         }
     }];
+    
 }
 
-- (void)hideView{
-    
+- (void)showView:(UIView *)view inSuperView:(UIView *)superView{
+    [self showView:view inSuperView:superView viewWillShowBlock:NULL viewDidShowBlock:NULL];
+}
+
+- (void)hideViewWillHideBlock:(dispatch_block_t)viewWillHideBlock viewDidHideBlock:(dispatch_block_t)viewDidHideBlock{
+    if (!self.isViewShowing) {
+        return ;
+    }
+
     if (self.viewWillHideInnerBlock) {
         self.viewWillHideInnerBlock();
     }
-
+    
+    if (viewWillHideBlock) {
+        viewWillHideBlock();
+    }
+    
     if (self.viewWillHideBlock) {
         self.viewWillHideBlock();
     }
@@ -210,6 +234,10 @@
         if (self.viewDidHideInnerBlock) {
             self.viewDidHideInnerBlock();
         }
+        if (viewDidHideBlock) {
+            viewDidHideBlock();
+        }
+        
         if (self.viewDidHideBlock) {
             self.viewDidHideBlock();
         }
@@ -218,6 +246,23 @@
             animationForHide.completion(finished);
         }
     }];
+}
+
+- (void)hideView{
+    [self hideViewWillHideBlock:NULL viewDidHideBlock:NULL];
+}
+
+- (void)hideLastViewAndShowView:(UIView *)view inSuperView:(UIView *)superView{
+    dispatch_block_t block = ^{
+        [self showView:view inSuperView:superView];
+    };
+    
+    if (self.isViewShowing) {
+        [self hideViewWillHideBlock:NULL viewDidHideBlock:block];
+        return ;
+    }
+    
+    block();
 }
 
 - (void)relayout{
@@ -253,9 +298,22 @@
     [self.popUtils showView:view inSuperView:self];
 }
 
+- (void)poputils_showView:(UIView *)view viewWillShowBlock:(dispatch_block_t)viewWillShowBlock viewDidShowBlock:(dispatch_block_t)viewDidShowBlock{
+    [self.popUtils showView:view inSuperView:self viewWillShowBlock:viewWillShowBlock viewDidShowBlock:viewDidShowBlock];
+}
+
 - (void)poputils_hideView{
     [self.popUtils hideView];
 }
+
+- (void)poputils_hideViewWillHideBlock:(dispatch_block_t)viewWillHideBlock viewDidHideBlock:(dispatch_block_t)viewDidHideBlock{
+    [self.popUtils hideViewWillHideBlock:viewWillHideBlock viewDidHideBlock:viewDidHideBlock];
+}
+
+- (void)poputils_hideLastViewAndShowView:(UIView *)view{
+    [self.popUtils hideLastViewAndShowView:view inSuperView:self];
+}
+
 @end
 
 @implementation UIViewController (JCPopupUtils)
@@ -264,6 +322,10 @@
     return self.view.popUtils;
 }
 - (void)poputils_showController:(UIViewController *)controller{
+    [self poputils_showController:controller viewWillShowBlock:NULL viewDidShowBlock:NULL];
+}
+
+- (void)poputils_showController:(UIViewController *)controller viewWillShowBlock:(dispatch_block_t)viewWillShowBlock viewDidShowBlock:(dispatch_block_t)viewDidShowBlock{
     __weak typeof(self) weakSelf = self;
     [self.popUtils setViewWillShowInnerBlock:^{
         [weakSelf addChildViewController:controller];
@@ -277,12 +339,27 @@
     [self.popUtils setViewDidHideInnerBlock:^{
         [controller removeFromParentViewController];
     }];
-    
-    [self.view poputils_showView:controller.view];
+    [self.view poputils_showView:controller.view viewWillShowBlock:viewWillShowBlock viewDidShowBlock:viewDidShowBlock];
 }
 
 - (void)poputils_hideController{
     [self.view poputils_hideView];
+}
+
+- (void)poputils_hideControllerViewWillHideBlock:(dispatch_block_t)viewWillHideBlock viewDidHideBlock:(dispatch_block_t)viewDidHideBlock{
+    [self.view poputils_hideViewWillHideBlock:viewWillHideBlock viewDidHideBlock:viewDidHideBlock];
+}
+
+- (void)poputils_hideLastViewAndShowController:(UIViewController *)controller{
+    dispatch_block_t block = ^(){
+        [self poputils_showController:controller];
+    };
+    if (self.popUtils.isViewShowing) {
+        [self poputils_hideControllerViewWillHideBlock:NULL viewDidHideBlock:block];
+        return;
+    }
+    
+    block();
 }
 
 @end
