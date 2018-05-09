@@ -57,17 +57,21 @@
 
 - (void)setupPopupUtils{
     
-//    JCPopupUtilsLayoutAndAnimationFromBottom *layoutAndAnimation = [[JCPopupUtilsLayoutAndAnimationFromBottom alloc] init];
-//    layoutAndAnimation.height = 300;
-//    self.popUtils.layoutAndAnimationForPortrait = layoutAndAnimation;
+    JCPopupUtilsLayoutAndAnimationFromBottom *layoutAndAnimation = [[JCPopupUtilsLayoutAndAnimationFromBottom alloc] init];
+    layoutAndAnimation.height = 300;
+    [self.popUtils setLayoutAndAnimation:layoutAndAnimation forOrientationAndScreenSize:JCScreenSize480x320_4 | JCScreenSize568x320_5];
     
+    //提示框类型
     JCPopupUtilsLayoutAndAnimationSystemAlert *layoutAnimationAlert = [[JCPopupUtilsLayoutAndAnimationSystemAlert alloc] init];
-//    self.popUtils.layoutAndAnimationForPortrait = layoutAnimationAlert;
     self.popUtils.layoutAndAnimationNormal = layoutAnimationAlert;
+    
+    //横屏右侧弹出类型
     JCPopupUtilsLayoutAndAnimationFromRight *layoutAndAnimationRight = [[JCPopupUtilsLayoutAndAnimationFromRight alloc] init];
     layoutAndAnimationRight.width = 200;
-//    [self.popUtils setLayoutAndAnimation:layoutAndAnimationRight forState:@(1)];
     [self.popUtils setLayoutAndAnimation:layoutAndAnimationRight forOrientationAndScreenSize:JCInterfaceOrientationLandscape];
+    
+    //更新一下state
+    [self.popUtils setStateForCurrentOrientationAndScreenSize];
 }
 
 - (IBAction)onClickPopupBtn:(id)sender {
