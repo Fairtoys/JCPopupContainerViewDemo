@@ -226,8 +226,13 @@
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
         self.view = nil;
-        [self.containerView removeFromSuperview];
         
+        //backgroundView 和containerView每次都重新创建，防止上次布局修改属性之后有残余
+        [self.backgroundView removeFromSuperview];
+        self.backgroundView = nil;
+        
+        [self.containerView removeFromSuperview];
+        self.containerView = nil;
         superView.userInteractionEnabled = userInteractionEnabled;
         
         if (self.viewDidHideInnerBlock) {

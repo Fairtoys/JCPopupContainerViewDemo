@@ -26,16 +26,18 @@
         }];
         
         [self.animationForShow setWillAnimations:^(__kindof JCPopupUtils * _Nonnull thePopUtils) {
-            
+            thePopUtils.containerView.alpha = 0;
             CGFloat height = CGRectGetMidY(thePopUtils.superView.bounds) + 100.f / 2;
             thePopUtils.view.transform = CGAffineTransformMakeTranslation(0, height);
         }];
         
         [self.animationForShow setAnimations:^(__kindof JCPopupUtils * _Nonnull thePopUtils) {
+            thePopUtils.containerView.alpha = 1;
             thePopUtils.view.transform = CGAffineTransformIdentity;
         }];
         
         [self.animationForHide setAnimations:^(__kindof JCPopupUtils * _Nonnull thePopUtils) {
+            thePopUtils.containerView.alpha = 0;
             CGFloat height = CGRectGetMidY(thePopUtils.superView.bounds) + 100.f / 2;
             thePopUtils.view.transform = CGAffineTransformMakeTranslation(0, height);
         }];
