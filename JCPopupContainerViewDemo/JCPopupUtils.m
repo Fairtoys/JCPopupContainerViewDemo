@@ -238,6 +238,7 @@
         if (self.viewDidHideInnerBlock) {
             self.viewDidHideInnerBlock();
         }
+        
         if (viewDidHideBlock) {
             viewDidHideBlock();
         }
@@ -334,17 +335,22 @@
         return ;
     }
     __weak typeof(self) weakSelf = self;
+    __weak typeof(controller) weakController = controller;
     [self.popUtils setViewWillShowInnerBlock:^{
-        [weakSelf addChildViewController:controller];
+        [weakSelf addChildViewController:weakController];
     }];
     [self.popUtils setViewDidShowInnerBlock:^{
-        [controller didMoveToParentViewController:weakSelf];
+        [weakController didMoveToParentViewController:weakSelf];
     }];
     [self.popUtils setViewWillHideInnerBlock:^{
-        [controller willMoveToParentViewController:nil];
+        [weakController willMoveToParentViewController:nil];
     }];
     [self.popUtils setViewDidHideInnerBlock:^{
-        [controller removeFromParentViewController];
+        [weakController removeFromParentViewController];
+        weakSelf.popUtils.viewWillShowInnerBlock = NULL;
+        weakSelf.popUtils.viewDidShowInnerBlock = NULL;
+        weakSelf.popUtils.viewWillHideBlock = NULL;
+        weakSelf.popUtils.viewDidHideInnerBlock = NULL;
     }];
     [self.view poputils_showView:controller.view viewWillShowBlock:viewWillShowBlock viewDidShowBlock:viewDidShowBlock];
 }

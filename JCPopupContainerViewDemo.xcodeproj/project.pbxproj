@@ -15,6 +15,8 @@
 		022F0502209A9EBB005CC7D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 022F0501209A9EBB005CC7D5 /* main.m */; };
 		022F050A209AA02F005CC7D5 /* JCPopupUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 022F0509209AA02F005CC7D5 /* JCPopupUtils.m */; };
 		02A67C3E20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A67C3D20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.m */; };
+		02A67C4220A2ED5600DE7A93 /* MyViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A67C4020A2ED5600DE7A93 /* MyViewController1.m */; };
+		02A67C4320A2ED5600DE7A93 /* MyViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A67C4120A2ED5600DE7A93 /* MyViewController1.xib */; };
 		02DAE49D209C680100629A39 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE49B209C680100629A39 /* MyViewController.m */; };
 		02DAE49E209C680100629A39 /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02DAE49C209C680100629A39 /* MyViewController.xib */; };
 		02DAE4A120A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4A020A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m */; };
@@ -42,6 +44,9 @@
 		022F0509209AA02F005CC7D5 /* JCPopupUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtils.m; sourceTree = "<group>"; };
 		02A67C3C20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.h"; sourceTree = "<group>"; };
 		02A67C3D20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.m"; sourceTree = "<group>"; };
+		02A67C3F20A2ED5600DE7A93 /* MyViewController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController1.h; sourceTree = "<group>"; };
+		02A67C4020A2ED5600DE7A93 /* MyViewController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController1.m; sourceTree = "<group>"; };
+		02A67C4120A2ED5600DE7A93 /* MyViewController1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyViewController1.xib; sourceTree = "<group>"; };
 		02DAE49A209C680100629A39 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		02DAE49B209C680100629A39 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		02DAE49C209C680100629A39 /* MyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyViewController.xib; sourceTree = "<group>"; };
@@ -124,6 +129,9 @@
 				022F04FD209A9EBB005CC7D5 /* LaunchScreen.storyboard */,
 				022F0500209A9EBB005CC7D5 /* Info.plist */,
 				022F0501209A9EBB005CC7D5 /* main.m */,
+				02A67C3F20A2ED5600DE7A93 /* MyViewController1.h */,
+				02A67C4020A2ED5600DE7A93 /* MyViewController1.m */,
+				02A67C4120A2ED5600DE7A93 /* MyViewController1.xib */,
 				02DAE49A209C680100629A39 /* MyViewController.h */,
 				02DAE49B209C680100629A39 /* MyViewController.m */,
 				02DAE49C209C680100629A39 /* MyViewController.xib */,
@@ -213,6 +221,7 @@
 				022F04FC209A9EBB005CC7D5 /* Assets.xcassets in Resources */,
 				02DAE49E209C680100629A39 /* MyViewController.xib in Resources */,
 				022F04FA209A9EBB005CC7D5 /* Main.storyboard in Resources */,
+				02A67C4320A2ED5600DE7A93 /* MyViewController1.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +293,7 @@
 				022F04F4209A9EBB005CC7D5 /* AppDelegate.m in Sources */,
 				022F050A209AA02F005CC7D5 /* JCPopupUtils.m in Sources */,
 				02DAE4AA20A150E000629A39 /* JCViewMultipleLayout.m in Sources */,
+				02A67C4220A2ED5600DE7A93 /* MyViewController1.m in Sources */,
 				02DAE4A720A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m in Sources */,
 				02DAE49D209C680100629A39 /* MyViewController.m in Sources */,
 				02DAE4C620A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m in Sources */,

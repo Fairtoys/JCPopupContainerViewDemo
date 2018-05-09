@@ -1,20 +1,18 @@
 //
-//  MyViewController.m
+//  MyViewController1.m
 //  JCPopupContainerViewDemo
 //
-//  Created by huajiao on 2018/5/4.
+//  Created by huajiao on 2018/5/9.
 //  Copyright © 2018年 huajiao. All rights reserved.
 //
 
-#import "MyViewController.h"
-#import "JCPopupUtils.h"
 #import "MyViewController1.h"
 
-@interface MyViewController ()
+@interface MyViewController1 ()
 
 @end
 
-@implementation MyViewController
+@implementation MyViewController1
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,15 +22,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)onClickBtn:(id)sender {
-    MyViewController1 *vc = [[MyViewController1 alloc] init];
-    [self.parentViewController poputils_hideLastViewAndShowController:vc];
-}
-- (IBAction)onClickShowView:(id)sender {
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor cyanColor];
-    [self.parentViewController.view poputils_hideLastViewAndShowView:view];
 }
 
 /*
@@ -44,7 +33,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 - (void)dealloc{
     NSLog(@"dealloc:%@", self);
 }
+
 @end
