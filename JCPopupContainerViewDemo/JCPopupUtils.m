@@ -335,21 +335,20 @@
         return ;
     }
     __weak typeof(self) weakSelf = self;
-    __weak typeof(controller) weakController = controller;
     [self.popUtils setViewWillShowInnerBlock:^{
-        [weakSelf addChildViewController:weakController];
+        [weakSelf addChildViewController:controller];
+        weakSelf.popUtils.viewWillShowInnerBlock = NULL;
     }];
     [self.popUtils setViewDidShowInnerBlock:^{
-        [weakController didMoveToParentViewController:weakSelf];
+        [controller didMoveToParentViewController:weakSelf];
+        weakSelf.popUtils.viewDidShowInnerBlock = NULL;
     }];
     [self.popUtils setViewWillHideInnerBlock:^{
-        [weakController willMoveToParentViewController:nil];
+        [controller willMoveToParentViewController:nil];
+        weakSelf.popUtils.viewWillHideInnerBlock = NULL;
     }];
     [self.popUtils setViewDidHideInnerBlock:^{
-        [weakController removeFromParentViewController];
-        weakSelf.popUtils.viewWillShowInnerBlock = NULL;
-        weakSelf.popUtils.viewDidShowInnerBlock = NULL;
-        weakSelf.popUtils.viewWillHideBlock = NULL;
+        [controller removeFromParentViewController];
         weakSelf.popUtils.viewDidHideInnerBlock = NULL;
     }];
     [self.view poputils_showView:controller.view viewWillShowBlock:viewWillShowBlock viewDidShowBlock:viewDidShowBlock];
