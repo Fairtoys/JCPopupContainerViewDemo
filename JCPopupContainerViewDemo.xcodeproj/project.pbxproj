@@ -24,7 +24,6 @@
 		02DAE4B820A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4B720A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.m */; };
 		02DAE4C620A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4C520A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m */; };
 		23D0307E209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */; };
-		23D03081209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D03080209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m */; };
 		DA1536E56CF081B20077B240 /* libPods-JCPopupContainerViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9187507DB798A32E50F75F4 /* libPods-JCPopupContainerViewDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -60,8 +59,6 @@
 		02DAE4C520A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCPopupUtils+JCOrientationAndScreenSizeSupport.m"; sourceTree = "<group>"; };
 		23D0307C209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtilsLayoutAndAnimation.h; sourceTree = "<group>"; };
 		23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtilsLayoutAndAnimation.m; sourceTree = "<group>"; };
-		23D0307F209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCPopupUtilsLayoutAndAnimation+DefaultLayout.h"; sourceTree = "<group>"; };
-		23D03080209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCPopupUtilsLayoutAndAnimation+DefaultLayout.m"; sourceTree = "<group>"; };
 		417971E54E2491BA2A9B240D /* Pods-JCPopupContainerViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JCPopupContainerViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JCPopupContainerViewDemo/Pods-JCPopupContainerViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		8D1CE6B04A85C2F772222100 /* Pods-JCPopupContainerViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JCPopupContainerViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JCPopupContainerViewDemo/Pods-JCPopupContainerViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B9187507DB798A32E50F75F4 /* libPods-JCPopupContainerViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JCPopupContainerViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,8 +113,6 @@
 				02DAE4C520A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m */,
 				23D0307C209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.h */,
 				23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */,
-				23D0307F209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.h */,
-				23D03080209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m */,
 				02DAE49F20A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.h */,
 				02DAE4A020A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m */,
 				02DAE4A220A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.h */,
@@ -285,7 +280,6 @@
 				022F0502209A9EBB005CC7D5 /* main.m in Sources */,
 				02A67C3E20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.m in Sources */,
 				02DAE4B820A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.m in Sources */,
-				23D03081209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m in Sources */,
 				23D0307E209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m in Sources */,
 				022F04F4209A9EBB005CC7D5 /* AppDelegate.m in Sources */,
 				022F050A209AA02F005CC7D5 /* JCPopupUtils.m in Sources */,

@@ -10,7 +10,6 @@
 #import "JCPopupUtils.h"
 #import "MyViewController.h"
 #import <Masonry.h>
-#import "JCPopupUtilsLayoutAndAnimation+DefaultLayout.h"
 #import "JCPopupUtilsLayoutAndAnimationFromBottom.h"
 #import "JCPopupUtilsLayoutAndAnimationFromRight.h"
 #import "JCPopupUtilsLayoutAndAnimationSystemAlert.h"
