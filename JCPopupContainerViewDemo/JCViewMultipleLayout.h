@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable dispatch_block_t)layoutForStateInt:(NSInteger)state;
 
 /**
- 默认的布局回调，如果没有设置其他状态的回调，则会默认调用此状态来布局
+ 默认的布局回调，如果没有设置其他状态的回调，则会默认调用此回调来布局
  */
 @property (nonatomic, copy, nullable) dispatch_block_t layoutNormal;
 

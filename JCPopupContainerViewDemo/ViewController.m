@@ -33,7 +33,6 @@
     [super viewDidLoad];
     [self setupPopBtnLayouts];
     [self setupPopupUtils];
-    [self.view jclayout_enumerateSetStateForCurrentOrientationAndScreenSize];
 }
 
 - (void)setupPopBtnLayouts{
@@ -52,7 +51,8 @@
         weakSelf.constraintY.constant = 100;
     } forOrientationAndScreenSize:JCScreenSize736x414_6p];
     
-    
+    //使用当前的屏幕尺寸和横竖屏状态更新一下state
+    [self.view jclayout_enumerateSetStateForCurrentOrientationAndScreenSize];
 }
 
 - (void)setupPopupUtils{
@@ -70,7 +70,7 @@
     layoutAndAnimationRight.width = 200;
     [self.popUtils setLayoutAndAnimation:layoutAndAnimationRight forOrientationAndScreenSize:JCInterfaceOrientationLandscape];
     
-    //更新一下state
+    //使用当前的屏幕尺寸和横竖屏状态更新一下state
     [self.popUtils setStateForCurrentOrientationAndScreenSize];
 }
 
