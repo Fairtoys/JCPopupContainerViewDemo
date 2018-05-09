@@ -6,11 +6,11 @@
 //  Copyright © 2018年 huajiao. All rights reserved.
 //
 
-#import "UIView+JCMultipleLayoutSupport.h"
+#import "JCViewMultipleLayout.h"
 #import <objc/runtime.h>
 #import "UIDevice+ScreenSize.h"
 
-@interface JCViewLayout ()
+@interface JCViewMultipleLayout ()
 
 @property (nonatomic, strong) NSMutableDictionary <id <NSCopying>, dispatch_block_t> *layoutsForState;
 
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation JCViewLayout
+@implementation JCViewMultipleLayout
 
 - (NSMutableDictionary<id<NSCopying>,dispatch_block_t> *)layoutsForState{
     if (!_layoutsForState) {
@@ -32,9 +32,15 @@
     
     [self setLayoutForState:self.state];
 }
+- (void)setLayout:(dispatch_block_t)layout forStateInt:(NSInteger)state{
+    [self setLayout:layout forState:@(state)];
+}
 
 - (dispatch_block_t)layoutForState:(id<NSCopying>)state{
     return self.layoutsForState[state];
+}
+- (dispatch_block_t)layoutForStateInt:(NSInteger)state{
+    return [self layoutForState:@(state)];
 }
 
 - (void)setLayoutNormal:(dispatch_block_t)layoutNormal{
@@ -79,25 +85,16 @@
 
 @end
 
-@implementation JCViewLayout (OrientationSupport)
-
-- (void)setStateForCurrentOrientation{
-    self.state = @(stateForCurrentOrientationAndCurrentScreenSize());
-}
-
-
-@end
-
 
 @implementation UIView (JCMultipleLayoutSupport)
-- (void)setJclayout_viewLayout:(JCViewLayout *)jclayout_viewLayout{
+- (void)setJclayout_viewLayout:(JCViewMultipleLayout *)jclayout_viewLayout{
     objc_setAssociatedObject(self, @selector(jclayout_viewLayout), jclayout_viewLayout, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (JCViewLayout *)jclayout_viewLayout{
-    JCViewLayout *_viewlayout = objc_getAssociatedObject(self, _cmd);
+- (JCViewMultipleLayout *)jclayout_viewLayout{
+    JCViewMultipleLayout *_viewlayout = objc_getAssociatedObject(self, _cmd);
     if (!_viewlayout) {
-        _viewlayout = [[JCViewLayout alloc] init];
+        _viewlayout = [[JCViewMultipleLayout alloc] init];
         [self setJclayout_viewLayout:_viewlayout];
     }
     return _viewlayout;
@@ -109,14 +106,5 @@
         [subview jclayout_enumerateSetState:state];
     }
 }
-
-- (void)jclayout_enumerateSetStateForCurrentOrientation{
-    [self.jclayout_viewLayout setStateForCurrentOrientation];
-    
-    for (UIView *subview in self.subviews) {
-        [subview jclayout_enumerateSetStateForCurrentOrientation];
-    }
-}
-
 
 @end

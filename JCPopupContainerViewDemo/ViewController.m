@@ -14,8 +14,10 @@
 #import "JCPopupUtilsLayoutAndAnimationFromBottom.h"
 #import "JCPopupUtilsLayoutAndAnimationFromRight.h"
 #import "JCPopupUtilsLayoutAndAnimationSystemAlert.h"
-#import "UIView+JCMultipleLayoutSupport.h"
+#import "JCViewMultipleLayout.h"
 #import "UIDevice+ScreenSize.h"
+#import "JCPopupUtils+JCOrientationAndScreenSizeSupport.h"
+#import "JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.h"
 
 
 @interface ViewController ()
@@ -51,21 +53,13 @@
     self.popUtils.layoutAndAnimationNormal = layoutAnimationAlert;
     JCPopupUtilsLayoutAndAnimationFromRight *layoutAndAnimationRight = [[JCPopupUtilsLayoutAndAnimationFromRight alloc] init];
     layoutAndAnimationRight.width = 200;
-    [self.popUtils setLayoutAndAnimation:layoutAndAnimationRight forState:@(1)];
+//    [self.popUtils setLayoutAndAnimation:layoutAndAnimationRight forState:@(1)];
+    [self.popUtils setLayoutAndAnimation:layoutAndAnimationRight forOrientationAndScreenSize:JCInterfaceOrientationLandscape];
 }
 
 - (IBAction)onClickPopupBtn:(id)sender {
-//    MyViewController *controller = [[MyViewController alloc] init];
-//    [self poputils_showController:controller];
-//    for (JCInterfaceOrientation i = JCInterfaceOrientationPortrait; i <= JCInterfaceOrientationLandscape; i <<= 1) {
-//        for (JCScreenSize j = JCScreenSize480x320; j <= JCScreenSize812x375; j <<= 1) {
-//            NSInteger state = stateWithOrientationAndScreenSize(i, j);
-//            NSLog(@"state %@", @(state));
-//        }
-//    }
-//    for (NSUInteger i = JCScreenSize480x320; i <= JCScreenSize812x375; i++ ) {
-//        NSLog(@"i<<1:%@", @((i << 1) + 0));
-//    }
+    MyViewController *controller = [[MyViewController alloc] init];
+    [self poputils_showController:controller];
 }
 
 
@@ -76,8 +70,8 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-        [self poputils_setStateForCurrentOrientation];
-        [self.view jclayout_enumerateSetStateForCurrentOrientation];
+        [self poputils_setStateForCurrentOrientationAndScreenSize];
+        [self.view jclayout_enumerateSetStateForCurrentOrientationAndScreenSize];
     } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
     }];
 }

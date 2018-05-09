@@ -55,9 +55,15 @@
     
     [self layoutForState:self.state];
 }
+- (void)setLayoutAndAnimation:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forStateInt:(NSInteger)state{
+    [self setLayoutAndAnimation:layoutAndAnimation forState:@(state)];
+}
 
 - (nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForState:(id <NSCopying>)state{
     return self.layoutAnimationsForState[state];
+}
+- (JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForStateInt:(NSInteger)state{
+    return [self layoutAndAnimationForState:@(state)];
 }
 
 - (void)setState:(id<NSCopying>)state{
@@ -228,60 +234,6 @@
 
 @end
 
-@implementation JCPopupUtils (OrientationSupport)
-
-- (void)setStateForCurrentOrientation{
-    self.state = @(stateForCurrentOrientationAndCurrentScreenSize());
-}
-
-- (void)setLayoutAndAnimation:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forOrientationAndScreenSize:(NSInteger)orientationAndScreenSize{
-    if (JCInterfaceOrientationPortrait & orientationAndScreenSize) {
-        if (JCScreenSize480x320 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize480x320)];
-        }
-        if (JCScreenSize568x320 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize568x320)];
-        }
-        if (JCScreenSize667x375 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize667x375)];
-        }
-
-        if (JCScreenSize736x414 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize736x414)];
-        }
-
-        if (JCScreenSize812x375 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationPortrait | JCScreenSize812x375)];
-        }
-    }
-    if (JCInterfaceOrientationLandscape & orientationAndScreenSize) {
-        if (JCScreenSize480x320 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize480x320)];
-        }
-        
-        if (JCScreenSize568x320 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize568x320)];
-        }
-        
-        if (JCScreenSize667x375 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize667x375)];
-        }
-        
-        if (JCScreenSize736x414 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize736x414)];
-        }
-        
-        if (JCScreenSize812x375 & orientationAndScreenSize) {
-            [self setLayoutAndAnimation:layoutAndAnimation forState:@(JCInterfaceOrientationLandscape | JCScreenSize812x375)];
-        }
-
-    }
-    
-}
-
-@end
-
-
 @implementation UIView (JCPopupUtils)
 
 - (void)setPopUtils:(JCPopupUtils *)popUtils{
@@ -304,11 +256,6 @@
 - (void)poputils_hideView{
     [self.popUtils hideView];
 }
-
-- (void)poputils_setStateForCurrentOrientation{
-    [self.popUtils setStateForCurrentOrientation];
-}
-
 @end
 
 @implementation UIViewController (JCPopupUtils)
@@ -336,10 +283,6 @@
 
 - (void)poputils_hideController{
     [self.view poputils_hideView];
-}
-
-- (void)poputils_setStateForCurrentOrientation{
-    [self.view poputils_setStateForCurrentOrientation];
 }
 
 @end

@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param state 对应的状态
  */
 - (void)setLayoutAndAnimation:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forState:(id <NSCopying>)state;
-
+- (void)setLayoutAndAnimation:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forStateInt:(NSInteger)state;
 /**
  获取对应的状态下的 LayoutAnimation
 
@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  @return JCPopupUtilsLayoutAndAnimation
  */
 - (nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForState:(id <NSCopying>)state;
+- (nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimationForStateInt:(NSInteger)state;
 @property (nonatomic, strong) id <NSCopying> state;//当前状态，设置此状态有可能会重新调用layout
 
 @property (nonatomic, strong, nullable) JCPopupUtilsLayoutAndAnimation *layoutAndAnimationNormal;//如果对应的state下的JCPopupUtilsLayoutAndAnimation都不存在的话，那么会使用此layout来做默认的布局
@@ -55,14 +56,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-/**
- 横竖屏的支持
- */
-@interface JCPopupUtils (OrientationSupport)
-- (void)setStateForCurrentOrientation;//判断当前的屏幕方向，来设置对应的布局
-- (void)setLayoutAndAnimation:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forOrientationAndScreenSize:(NSInteger)orientationAndScreenSize;
-@end
-
 @interface UIView (JCPopupUtils)
 
 @property (nonatomic, strong) JCPopupUtils *popUtils;
@@ -77,11 +70,6 @@ NS_ASSUME_NONNULL_BEGIN
  隐藏当前显示的view
  */
 - (void)poputils_hideView;
-
-/**
- [self.popUtils relayoutUsingCurrentOrientation]
- */
-- (void)poputils_setStateForCurrentOrientation;
 
 @end
 
@@ -100,10 +88,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)poputils_hideController;
 
-/**
- [self.popUtils relayoutUsingCurrentOrientation]
- */
-- (void)poputils_setStateForCurrentOrientation;
 @end
 
 
