@@ -10,7 +10,6 @@
 #import <Masonry.h>
 #import <objc/runtime.h>
 #import "JCPopupUtilsLayoutAndAnimation.h"
-#import "UIDevice+ScreenSize.h"
 
 @interface JCPopupUtils () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) NSMutableDictionary <id <NSCopying>, JCPopupUtilsLayoutAndAnimation *> *layoutAnimationsForState;

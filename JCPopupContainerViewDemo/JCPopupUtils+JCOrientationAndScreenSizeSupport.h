@@ -7,7 +7,7 @@
 //
 
 #import "JCPopupUtils.h"
-#import "UIDevice+ScreenSize.h"
+#import "UIDevice+JCScreenSizeUtils.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

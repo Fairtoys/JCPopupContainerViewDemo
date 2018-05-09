@@ -21,7 +21,7 @@
 		02DAE4A420A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4A320A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m */; };
 		02DAE4A720A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4A620A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m */; };
 		02DAE4AA20A150E000629A39 /* JCViewMultipleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4A920A150E000629A39 /* JCViewMultipleLayout.m */; };
-		02DAE4B820A1B0E600629A39 /* UIDevice+ScreenSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4B720A1B0E600629A39 /* UIDevice+ScreenSize.m */; };
+		02DAE4B820A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4B720A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.m */; };
 		02DAE4C620A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DAE4C520A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m */; };
 		23D0307E209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */; };
 		23D03081209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D03080209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m */; };
@@ -54,8 +54,8 @@
 		02DAE4A620A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtilsLayoutAndAnimationSystemAlert.m; sourceTree = "<group>"; };
 		02DAE4A820A150E000629A39 /* JCViewMultipleLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCViewMultipleLayout.h; sourceTree = "<group>"; };
 		02DAE4A920A150E000629A39 /* JCViewMultipleLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCViewMultipleLayout.m; sourceTree = "<group>"; };
-		02DAE4B620A1B0E600629A39 /* UIDevice+ScreenSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ScreenSize.h"; sourceTree = "<group>"; };
-		02DAE4B720A1B0E600629A39 /* UIDevice+ScreenSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ScreenSize.m"; sourceTree = "<group>"; };
+		02DAE4B620A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+JCScreenSizeUtils.h"; sourceTree = "<group>"; };
+		02DAE4B720A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+JCScreenSizeUtils.m"; sourceTree = "<group>"; };
 		02DAE4C420A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCPopupUtils+JCOrientationAndScreenSizeSupport.h"; sourceTree = "<group>"; };
 		02DAE4C520A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCPopupUtils+JCOrientationAndScreenSizeSupport.m"; sourceTree = "<group>"; };
 		23D0307C209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtilsLayoutAndAnimation.h; sourceTree = "<group>"; };
@@ -104,8 +104,8 @@
 				022F04F3209A9EBB005CC7D5 /* AppDelegate.m */,
 				022F04F5209A9EBB005CC7D5 /* ViewController.h */,
 				022F04F6209A9EBB005CC7D5 /* ViewController.m */,
-				02DAE4B620A1B0E600629A39 /* UIDevice+ScreenSize.h */,
-				02DAE4B720A1B0E600629A39 /* UIDevice+ScreenSize.m */,
+				02DAE4B620A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.h */,
+				02DAE4B720A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.m */,
 				02DAE4A820A150E000629A39 /* JCViewMultipleLayout.h */,
 				02DAE4A920A150E000629A39 /* JCViewMultipleLayout.m */,
 				02A67C3C20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.h */,
@@ -284,7 +284,7 @@
 				02DAE4A420A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m in Sources */,
 				022F0502209A9EBB005CC7D5 /* main.m in Sources */,
 				02A67C3E20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.m in Sources */,
-				02DAE4B820A1B0E600629A39 /* UIDevice+ScreenSize.m in Sources */,
+				02DAE4B820A1B0E600629A39 /* UIDevice+JCScreenSizeUtils.m in Sources */,
 				23D03081209DD9DD00BBADAD /* JCPopupUtilsLayoutAndAnimation+DefaultLayout.m in Sources */,
 				23D0307E209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m in Sources */,
 				022F04F4209A9EBB005CC7D5 /* AppDelegate.m in Sources */,
