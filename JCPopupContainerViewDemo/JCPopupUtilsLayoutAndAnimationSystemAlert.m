@@ -21,13 +21,13 @@
             thePopUtils.containerView.backgroundColor = [UIColor greenColor];
             [thePopUtils.view mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.center.equalTo(thePopUtils.containerView);
-                make.size.mas_equalTo(CGSizeMake(100, 100));
+                make.size.mas_equalTo(CGSizeMake(200, 200));
             }];
         }];
         
         [self.animationForShow setWillAnimations:^(__kindof JCPopupUtils * _Nonnull thePopUtils) {
             thePopUtils.containerView.alpha = 0;
-            CGFloat height = CGRectGetMidY(thePopUtils.superView.bounds) + 100.f / 2;
+            CGFloat height = CGRectGetMidY(thePopUtils.superView.bounds) + 200 / 2;
             thePopUtils.view.transform = CGAffineTransformMakeTranslation(0, height);
         }];
         
@@ -38,7 +38,7 @@
         
         [self.animationForHide setAnimations:^(__kindof JCPopupUtils * _Nonnull thePopUtils) {
             thePopUtils.containerView.alpha = 0;
-            CGFloat height = CGRectGetMidY(thePopUtils.superView.bounds) + 100.f / 2;
+            CGFloat height = CGRectGetMidY(thePopUtils.superView.bounds) + 200 / 2;
             thePopUtils.view.transform = CGAffineTransformMakeTranslation(0, height);
         }];
     }
