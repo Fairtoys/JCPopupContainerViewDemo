@@ -36,6 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)poputils_setStateForCurrentOrientationAndScreenSize;
 
+/**
+ [self.popUtils setLayoutAndAnimation:layoutAndAnimation forOrientationAndScreenSize:orientationAndScreenSize];
+ 
+ @param layoutAndAnimation 对应状态下的layout
+ @param orientationAndScreenSize JCInterfaceOrientation | JCScreenSize,
+ */
+- (void)poputils_setLayoutAndAnimation:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forOrientationAndScreenSize:(JCInterfaceOrientation)orientationAndScreenSize;
+
 @end
 
 @interface UIViewController (JCPopUtilsOrientationAndScreenSizeSupport)
@@ -43,6 +51,14 @@ NS_ASSUME_NONNULL_BEGIN
  [self.popUtils relayoutUsingCurrentOrientation]
  */
 - (void)poputils_setStateForCurrentOrientationAndScreenSize;
+
+/**
+ [self.view poputils_setLayoutAndAnimation:layoutAndAnimation forOrientationAndScreenSize:orientationAndScreenSize];
+ 
+ @param layoutAndAnimation 对应状态下的layout
+ @param orientationAndScreenSize JCInterfaceOrientation | JCScreenSize,
+ */
+- (void)poputils_setLayoutAndAnimation:(nullable __kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forOrientationAndScreenSize:(JCInterfaceOrientation)orientationAndScreenSize;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -34,6 +34,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)jclayout_enumerateSetStateForCurrentOrientationAndScreenSize;
 
+
+/**
+ [self.jclayout_viewLayout setLayout:layout forOrientationAndScreenSize:orientationAndScreenSize];
+
+ @param layout 对应状态的layout
+ @param orientationAndScreenSize JCInterfaceOrientation | JCScreenSize
+ */
+- (void)jclayout_setLayout:(nullable dispatch_block_t)layout forOrientationAndScreenSize:(JCInterfaceOrientation)orientationAndScreenSize;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -34,6 +34,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="constraintX" destination="DQX-FW-GcQ" id="k4p-aX-3IK"/>
                         <outlet property="constraintY" destination="XgE-Bx-bWn" id="bSh-vC-ddC"/>
                         <outlet property="popBt" destination="RfB-7q-ocm" id="wdh-nl-6kN"/>
                     </connections>

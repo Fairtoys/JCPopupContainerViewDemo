@@ -10,6 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ 此枚举包含了屏幕方向和屏幕尺寸
+
+ - JCInterfaceOrientationPortrait: 竖屏
+ - JCInterfaceOrientationLandscape: 横屏
+ - JCScreenSizeUnknown: 不知道什么尺寸
+ - JCScreenSize480x320_4: 4,4s的屏
+ - JCScreenSize568x320_5: 5,5s,5c的屏
+ - JCScreenSize667x375_6: 6,6s,7,8的屏
+ - JCScreenSize736x414_6p: 6p,6sp,7p,8p的屏
+ - JCScreenSize812x375_X: iPhoneX的屏
+ - JCInterfaceOrientationAll: 横竖屏
+ - JCScreenSizeAll: 所有尺寸
+ */
 typedef NS_OPTIONS(NSUInteger, JCInterfaceOrientation) {
     JCInterfaceOrientationPortrait  = 1 << 0,
     JCInterfaceOrientationLandscape = 1 << 1,

@@ -23,6 +23,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintY;
 @property (weak, nonatomic) IBOutlet UIButton *popBt;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintX;
 
 @end
 
@@ -32,13 +33,25 @@
     [super viewDidLoad];
     [self setupPopBtnLayouts];
     [self setupPopupUtils];
+    [self.view jclayout_enumerateSetStateForCurrentOrientationAndScreenSize];
 }
 
 - (void)setupPopBtnLayouts{
     __weak typeof(self) weakSelf = self;
     [self.popBt.jclayout_viewLayout setLayoutNormal:^{
+        weakSelf.constraintX.constant = 100;
         weakSelf.constraintY.constant = -100;
     }];
+    [self.popBt.jclayout_viewLayout setLayout:^{
+        weakSelf.constraintX.constant = -100;
+        weakSelf.constraintY.constant = 100;
+    } forOrientationAndScreenSize:JCScreenSize480x320_4 | JCScreenSize568x320_5 | JCInterfaceOrientationLandscape];
+    
+    [self.popBt.jclayout_viewLayout setLayout:^{
+        weakSelf.constraintX.constant = 50;
+        weakSelf.constraintY.constant = 100;
+    } forOrientationAndScreenSize:JCScreenSize736x414_6p];
+    
     
 }
 

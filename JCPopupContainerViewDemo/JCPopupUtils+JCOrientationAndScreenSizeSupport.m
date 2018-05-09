@@ -33,7 +33,9 @@
     
     if (!inputOrientations && inputScreenSizes) {
         for (JCInterfaceOrientation orientation = JCInterfaceOrientationPortrait; orientation <= JCInterfaceOrientationLandscape; orientation <<= 1) {
-            [self setLayoutAndAnimation:layoutAndAnimation forStateInt:orientation | theScreenSize ];
+            if (theScreenSize & inputScreenSizes) {
+                [self setLayoutAndAnimation:layoutAndAnimation forStateInt:orientation | theScreenSize ];
+            }
         }
         return ;
     }
@@ -56,11 +58,19 @@
     [self.popUtils setStateForCurrentOrientationAndScreenSize];
 }
 
+- (void)poputils_setLayoutAndAnimation:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forOrientationAndScreenSize:(JCInterfaceOrientation)orientationAndScreenSize{
+    [self.popUtils setLayoutAndAnimation:layoutAndAnimation forOrientationAndScreenSize:orientationAndScreenSize];
+}
+
 @end
 
 @implementation UIViewController (JCOrientationAndScreenSizeSupport)
 - (void)poputils_setStateForCurrentOrientationAndScreenSize{
     [self.view poputils_setStateForCurrentOrientationAndScreenSize];
+}
+
+- (void)poputils_setLayoutAndAnimation:(__kindof JCPopupUtilsLayoutAndAnimation *)layoutAndAnimation forOrientationAndScreenSize:(JCInterfaceOrientation)orientationAndScreenSize{
+    [self.view poputils_setLayoutAndAnimation:layoutAndAnimation forOrientationAndScreenSize:orientationAndScreenSize];
 }
 
 @end

@@ -33,7 +33,9 @@
     
     if (!inputOrientations && inputScreenSizes) {
         for (JCInterfaceOrientation orientation = JCInterfaceOrientationPortrait; orientation <= JCInterfaceOrientationLandscape; orientation <<= 1) {
-            [self setLayout:layout forStateInt:orientation | theScreenSize];
+            if (theScreenSize & inputScreenSizes) {
+                [self setLayout:layout forStateInt:orientation | theScreenSize];
+            }
         }
         return ;
     }
@@ -58,6 +60,10 @@
     for (UIView *subview in self.subviews) {
         [subview jclayout_enumerateSetStateForCurrentOrientationAndScreenSize];
     }
+}
+
+- (void)jclayout_setLayout:(nullable dispatch_block_t)layout forOrientationAndScreenSize:(JCInterfaceOrientation)orientationAndScreenSize{
+    [self.jclayout_viewLayout setLayout:layout forOrientationAndScreenSize:orientationAndScreenSize];
 }
 
 @end
