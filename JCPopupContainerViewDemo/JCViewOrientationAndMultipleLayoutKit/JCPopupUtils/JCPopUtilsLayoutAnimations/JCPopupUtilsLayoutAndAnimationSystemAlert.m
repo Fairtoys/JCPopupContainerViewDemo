@@ -18,7 +18,6 @@
     self = [super init];
     if (self) {
         [self setLayoutBlock:^(__kindof JCPopupUtils * _Nonnull thePopUtils) {
-            thePopUtils.containerView.backgroundColor = [UIColor greenColor];
             [thePopUtils.view mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.center.equalTo(thePopUtils.containerView);
                 make.size.mas_equalTo(CGSizeMake(200, 200));
