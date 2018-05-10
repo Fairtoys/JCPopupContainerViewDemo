@@ -102,41 +102,81 @@
 		022F04F1209A9EBB005CC7D5 /* JCPopupContainerViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				02F987CE20A3EFE9006753DE /* JCViewOrientationAndMultipleLayoutKit */,
 				022F04F2209A9EBB005CC7D5 /* AppDelegate.h */,
 				022F04F3209A9EBB005CC7D5 /* AppDelegate.m */,
-				022F04F5209A9EBB005CC7D5 /* ViewController.h */,
-				022F04F6209A9EBB005CC7D5 /* ViewController.m */,
-				02DAE4B620A1B0E600629A39 /* UIDevice+JCOrientationAndScreenSizeUtils.h */,
-				02DAE4B720A1B0E600629A39 /* UIDevice+JCOrientationAndScreenSizeUtils.m */,
-				02DAE4A820A150E000629A39 /* JCViewMultipleLayout.h */,
-				02DAE4A920A150E000629A39 /* JCViewMultipleLayout.m */,
-				02A67C3C20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.h */,
-				02A67C3D20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.m */,
-				022F0508209AA02F005CC7D5 /* JCPopupUtils.h */,
-				022F0509209AA02F005CC7D5 /* JCPopupUtils.m */,
-				02DAE4C420A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.h */,
-				02DAE4C520A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m */,
-				23D0307C209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.h */,
-				23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */,
-				02DAE49F20A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.h */,
-				02DAE4A020A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m */,
-				02DAE4A220A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.h */,
-				02DAE4A320A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m */,
-				02DAE4A520A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.h */,
-				02DAE4A620A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m */,
-				022F04F8209A9EBB005CC7D5 /* Main.storyboard */,
-				022F04FB209A9EBB005CC7D5 /* Assets.xcassets */,
-				022F04FD209A9EBB005CC7D5 /* LaunchScreen.storyboard */,
-				022F0500209A9EBB005CC7D5 /* Info.plist */,
-				022F0501209A9EBB005CC7D5 /* main.m */,
 				02A67C3F20A2ED5600DE7A93 /* MyViewController1.h */,
 				02A67C4020A2ED5600DE7A93 /* MyViewController1.m */,
 				02A67C4120A2ED5600DE7A93 /* MyViewController1.xib */,
 				02DAE49A209C680100629A39 /* MyViewController.h */,
 				02DAE49B209C680100629A39 /* MyViewController.m */,
 				02DAE49C209C680100629A39 /* MyViewController.xib */,
+				022F04F5209A9EBB005CC7D5 /* ViewController.h */,
+				022F04F6209A9EBB005CC7D5 /* ViewController.m */,
+				022F04F8209A9EBB005CC7D5 /* Main.storyboard */,
+				022F04FB209A9EBB005CC7D5 /* Assets.xcassets */,
+				022F04FD209A9EBB005CC7D5 /* LaunchScreen.storyboard */,
+				022F0500209A9EBB005CC7D5 /* Info.plist */,
+				022F0501209A9EBB005CC7D5 /* main.m */,
 			);
 			path = JCPopupContainerViewDemo;
+			sourceTree = "<group>";
+		};
+		02F987CE20A3EFE9006753DE /* JCViewOrientationAndMultipleLayoutKit */ = {
+			isa = PBXGroup;
+			children = (
+				02F987D120A3F0DB006753DE /* JCOrientationAndScreenSizeUtils */,
+				02F987D020A3F0A7006753DE /* JCViewMultipleLayout */,
+				02F987CF20A3F08C006753DE /* JCPopupUtils */,
+			);
+			path = JCViewOrientationAndMultipleLayoutKit;
+			sourceTree = "<group>";
+		};
+		02F987CF20A3F08C006753DE /* JCPopupUtils */ = {
+			isa = PBXGroup;
+			children = (
+				022F0508209AA02F005CC7D5 /* JCPopupUtils.h */,
+				022F0509209AA02F005CC7D5 /* JCPopupUtils.m */,
+				02DAE4C420A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.h */,
+				02DAE4C520A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m */,
+				23D0307C209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.h */,
+				23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */,
+				02F987D220A3F10E006753DE /* JCPopUtilsLayoutAnimations */,
+			);
+			path = JCPopupUtils;
+			sourceTree = "<group>";
+		};
+		02F987D020A3F0A7006753DE /* JCViewMultipleLayout */ = {
+			isa = PBXGroup;
+			children = (
+				02DAE4A820A150E000629A39 /* JCViewMultipleLayout.h */,
+				02DAE4A920A150E000629A39 /* JCViewMultipleLayout.m */,
+				02A67C3C20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.h */,
+				02A67C3D20A2A08B00DE7A93 /* JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.m */,
+			);
+			path = JCViewMultipleLayout;
+			sourceTree = "<group>";
+		};
+		02F987D120A3F0DB006753DE /* JCOrientationAndScreenSizeUtils */ = {
+			isa = PBXGroup;
+			children = (
+				02DAE4B620A1B0E600629A39 /* UIDevice+JCOrientationAndScreenSizeUtils.h */,
+				02DAE4B720A1B0E600629A39 /* UIDevice+JCOrientationAndScreenSizeUtils.m */,
+			);
+			path = JCOrientationAndScreenSizeUtils;
+			sourceTree = "<group>";
+		};
+		02F987D220A3F10E006753DE /* JCPopUtilsLayoutAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				02DAE49F20A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.h */,
+				02DAE4A020A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m */,
+				02DAE4A220A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.h */,
+				02DAE4A320A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.m */,
+				02DAE4A520A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.h */,
+				02DAE4A620A051BD00629A39 /* JCPopupUtilsLayoutAndAnimationSystemAlert.m */,
+			);
+			path = JCPopUtilsLayoutAnimations;
 			sourceTree = "<group>";
 		};
 		46AD9275BBA7424AD63A0BFA /* Frameworks */ = {
