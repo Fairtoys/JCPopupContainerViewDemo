@@ -14,7 +14,7 @@
 #import "JCPopupUtilsLayoutAndAnimationFromRight.h"
 #import "JCPopupUtilsLayoutAndAnimationSystemAlert.h"
 #import "JCViewMultipleLayout.h"
-#import "UIDevice+JCScreenSizeUtils.h"
+#import "UIDevice+JCOrientationAndScreenSizeUtils.h"
 #import "JCPopupUtils+JCOrientationAndScreenSizeSupport.h"
 #import "JCViewMultipleLayout+JCOrientationAndScreenSizeSupport.h"
 

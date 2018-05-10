@@ -6,9 +6,9 @@
 //  Copyright © 2018年 huajiao. All rights reserved.
 //
 
-#import "UIDevice+JCScreenSizeUtils.h"
+#import "UIDevice+JCOrientationAndScreenSizeUtils.h"
 
-@implementation UIDevice (JCScreenSizeUtils)
+@implementation UIDevice (JCOrientationAndScreenSizeUtils)
 
 + (BOOL)isEqualToHeight:(CGFloat)theHeight{
     CGRect rect = [UIScreen mainScreen].bounds;

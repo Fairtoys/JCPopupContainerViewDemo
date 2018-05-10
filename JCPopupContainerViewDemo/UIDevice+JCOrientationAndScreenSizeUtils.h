@@ -46,7 +46,7 @@ static inline JCInterfaceOrientation currentInterfaceOrientation(){
     return JCInterfaceOrientationPortrait;
 }
 
-@interface UIDevice (JCScreenSizeUtils)
+@interface UIDevice (JCOrientationAndScreenSizeUtils)
 + (BOOL)jc_is480x320;//iPhone4/4s
 + (BOOL)jc_is568x320;//iPhone5/5s/5c
 + (BOOL)jc_is667x375;//iPhone6/6s

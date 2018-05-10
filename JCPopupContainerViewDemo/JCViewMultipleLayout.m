@@ -8,7 +8,7 @@
 
 #import "JCViewMultipleLayout.h"
 #import <objc/runtime.h>
-#import "UIDevice+JCScreenSizeUtils.h"
+#import "UIDevice+JCOrientationAndScreenSizeUtils.h"
 
 @interface JCViewMultipleLayout ()
 

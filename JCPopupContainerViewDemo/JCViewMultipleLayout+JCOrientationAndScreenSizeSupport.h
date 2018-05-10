@@ -7,7 +7,7 @@
 //
 
 #import "JCViewMultipleLayout.h"
-#import "UIDevice+JCScreenSizeUtils.h"
+#import "UIDevice+JCOrientationAndScreenSizeUtils.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
