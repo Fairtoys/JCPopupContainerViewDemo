@@ -283,7 +283,10 @@
 }
 
 - (BOOL)isViewShowing{
-    return _view.superview;
+    //9.1 系统不能直接用_view.superview来判断，有问题
+    BOOL isViewShowing = _view.superview ? YES : NO;
+//    BOOL isViewShowing = ((BOOL)_view.superview);
+    return isViewShowing;
 }
 
 @end
