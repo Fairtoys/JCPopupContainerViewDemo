@@ -54,8 +54,12 @@
 
 @implementation UIView (JCViewMultipleLayoutOrientationAndScreenSizeSupport)
 
-- (void)jclayout_enumerateSetStateForCurrentOrientationAndScreenSize{
+- (void)jclayout_setStateForCurrentOrientationAndScreenSize{
     [self.jclayout_viewLayout setStateForCurrentOrientationAndScreenSize];
+}
+
+- (void)jclayout_enumerateSetStateForCurrentOrientationAndScreenSize{
+    [self jclayout_setStateForCurrentOrientationAndScreenSize];
     
     for (UIView *subview in self.subviews) {
         [subview jclayout_enumerateSetStateForCurrentOrientationAndScreenSize];

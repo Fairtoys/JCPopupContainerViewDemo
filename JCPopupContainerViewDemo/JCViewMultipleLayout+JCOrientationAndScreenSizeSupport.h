@@ -29,6 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (JCViewMultipleLayoutOrientationAndScreenSizeSupport)
 
+
+/**
+ [self.jclayout_viewLayout setStateForCurrentOrientationAndScreenSize];
+ */
+- (void)jclayout_setStateForCurrentOrientationAndScreenSize;
+
 /**
  调用 自己的setStateForCurrentOrientation， 并遍历子view，也调用setStateForCurrentOrientation
  */
