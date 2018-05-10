@@ -62,6 +62,8 @@
 		02DAE4B720A1B0E600629A39 /* UIDevice+JCOrientationAndScreenSizeUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+JCOrientationAndScreenSizeUtils.m"; sourceTree = "<group>"; };
 		02DAE4C420A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCPopupUtils+JCOrientationAndScreenSizeSupport.h"; sourceTree = "<group>"; };
 		02DAE4C520A2907900629A39 /* JCPopupUtils+JCOrientationAndScreenSizeSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "JCPopupUtils+JCOrientationAndScreenSizeSupport.m"; sourceTree = "<group>"; };
+		02F987D320A3F445006753DE /* JCViewOrientationAndScreenSizeAdaptionKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCViewOrientationAndScreenSizeAdaptionKit.h; sourceTree = "<group>"; };
+		02F987D420A3F5E1006753DE /* JCPopupUtilsLayoutAndAnimations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtilsLayoutAndAnimations.h; sourceTree = "<group>"; };
 		23D0307C209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCPopupUtilsLayoutAndAnimation.h; sourceTree = "<group>"; };
 		23D0307D209DD79B00BBADAD /* JCPopupUtilsLayoutAndAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCPopupUtilsLayoutAndAnimation.m; sourceTree = "<group>"; };
 		417971E54E2491BA2A9B240D /* Pods-JCPopupContainerViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JCPopupContainerViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-JCPopupContainerViewDemo/Pods-JCPopupContainerViewDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		02F987CE20A3EFE9006753DE /* JCViewOrientationAndScreenSizeAdaptionKit */ = {
 			isa = PBXGroup;
 			children = (
+				02F987D320A3F445006753DE /* JCViewOrientationAndScreenSizeAdaptionKit.h */,
 				02F987D120A3F0DB006753DE /* JCOrientationAndScreenSizeUtils */,
 				02F987D020A3F0A7006753DE /* JCViewMultipleLayout */,
 				02F987CF20A3F08C006753DE /* JCPopupUtils */,
@@ -169,6 +172,7 @@
 		02F987D220A3F10E006753DE /* JCPopUtilsLayoutAnimations */ = {
 			isa = PBXGroup;
 			children = (
+				02F987D420A3F5E1006753DE /* JCPopupUtilsLayoutAndAnimations.h */,
 				02DAE49F20A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.h */,
 				02DAE4A020A04B4800629A39 /* JCPopupUtilsLayoutAndAnimationFromBottom.m */,
 				02DAE4A220A04DE900629A39 /* JCPopupUtilsLayoutAndAnimationFromRight.h */,
