@@ -102,7 +102,7 @@
 		022F04F1209A9EBB005CC7D5 /* JCPopupContainerViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				02F987CE20A3EFE9006753DE /* JCViewOrientationAndMultipleLayoutKit */,
+				02F987CE20A3EFE9006753DE /* JCViewOrientationAndScreenSizeAdaptionKit */,
 				022F04F2209A9EBB005CC7D5 /* AppDelegate.h */,
 				022F04F3209A9EBB005CC7D5 /* AppDelegate.m */,
 				02A67C3F20A2ED5600DE7A93 /* MyViewController1.h */,
@@ -122,14 +122,14 @@
 			path = JCPopupContainerViewDemo;
 			sourceTree = "<group>";
 		};
-		02F987CE20A3EFE9006753DE /* JCViewOrientationAndMultipleLayoutKit */ = {
+		02F987CE20A3EFE9006753DE /* JCViewOrientationAndScreenSizeAdaptionKit */ = {
 			isa = PBXGroup;
 			children = (
 				02F987D120A3F0DB006753DE /* JCOrientationAndScreenSizeUtils */,
 				02F987D020A3F0A7006753DE /* JCViewMultipleLayout */,
 				02F987CF20A3F08C006753DE /* JCPopupUtils */,
 			);
-			path = JCViewOrientationAndMultipleLayoutKit;
+			path = JCViewOrientationAndScreenSizeAdaptionKit;
 			sourceTree = "<group>";
 		};
 		02F987CF20A3F08C006753DE /* JCPopupUtils */ = {
