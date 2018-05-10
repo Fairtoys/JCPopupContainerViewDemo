@@ -36,16 +36,17 @@
 
 - (void)setupPopBtnLayouts{
     __weak typeof(self) weakSelf = self;
-    [self.popBt.jclayout_viewLayout setLayoutNormal:^{
+    [self.popBt  setJclayout_layoutNormal:^{
         weakSelf.constraintX.constant = 100;
         weakSelf.constraintY.constant = -100;
     }];
-    [self.popBt.jclayout_viewLayout setLayout:^{
+    
+    [self.popBt jclayout_setLayout:^{
         weakSelf.constraintX.constant = -100;
         weakSelf.constraintY.constant = 100;
     } forOrientationAndScreenSize:JCScreenSize480x320_4 | JCScreenSize568x320_5 | JCInterfaceOrientationLandscape];
     
-    [self.popBt.jclayout_viewLayout setLayout:^{
+    [self.popBt jclayout_setLayout:^{
         weakSelf.constraintX.constant = 50;
         weakSelf.constraintY.constant = 100;
     } forOrientationAndScreenSize:JCScreenSize736x414_6p];

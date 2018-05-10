@@ -87,6 +87,7 @@
 
 
 @implementation UIView (JCMultipleLayoutSupport)
+
 - (void)setJclayout_viewLayout:(JCViewMultipleLayout *)jclayout_viewLayout{
     objc_setAssociatedObject(self, @selector(jclayout_viewLayout), jclayout_viewLayout, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -100,8 +101,13 @@
     return _viewlayout;
 }
 
+- (JCViewMultipleLayout *)jclayout_viewLayoutOrNilIfNotCreated{
+    return objc_getAssociatedObject(self, @selector(jclayout_viewLayout));
+}
+
 - (void)jclayout_enumerateSetState:(id <NSCopying>)state{
-    [self.jclayout_viewLayout setState:state];
+    JCViewMultipleLayout *_viewlayout = self.jclayout_viewLayoutOrNilIfNotCreated;
+    [_viewlayout setState:state];
     for (UIView *subview in self.subviews) {
         [subview jclayout_enumerateSetState:state];
     }
@@ -110,5 +116,50 @@
 - (void)jclayout_enumerateSetStateInt:(NSInteger)state{
     [self jclayout_enumerateSetState:@(state)];
 }
+
+#pragma mark - 转发给jclayout_viewLayout的方法
+/**
+ 设置在state状态下的布局回调
+ 
+ @param layout 回调
+ @param state 状态
+ */
+- (void)jclayout_setLayout:(nullable dispatch_block_t)layout forState:(id <NSCopying>)state{
+    [self.jclayout_viewLayout setLayout:layout forState:state];
+}
+
+- (void)jclayout_setLayout:(nullable dispatch_block_t)layout forStateInt:(NSInteger)state{
+    [self.jclayout_viewLayout setLayout:layout forStateInt:state];
+}
+
+/**
+ 获取在state下的回调
+ 
+ @param state 状态
+ @return 布局回调
+ */
+- (nullable dispatch_block_t)jclayout_layoutForState:(id <NSCopying>)state{
+    return [self.jclayout_viewLayoutOrNilIfNotCreated layoutForState:state];
+}
+
+- (nullable dispatch_block_t)jclayout_layoutForStateInt:(NSInteger)state{
+    return [self.jclayout_viewLayoutOrNilIfNotCreated layoutForStateInt:state];
+}
+
+- (void)setJclayout_layoutNormal:(dispatch_block_t)jclayout_layoutNormal{
+    self.jclayout_viewLayout.layoutNormal = jclayout_layoutNormal;
+}
+
+- (dispatch_block_t)jclayout_layoutNormal{
+    return self.jclayout_viewLayoutOrNilIfNotCreated.layoutNormal;
+}
+
+- (void)setJclayout_state:(id<NSCopying>)jclayout_state{
+    self.jclayout_viewLayout.state = jclayout_state;
+}
+- (id<NSCopying>)jclayout_state{
+    return self.jclayout_viewLayoutOrNilIfNotCreated.state;
+}
+
 
 @end

@@ -131,7 +131,11 @@
 }
 
 - (void)onClickBackgroundView:(UITapGestureRecognizer *)sender{
-    [self hideView];
+    if (self.onClickBackgroundViewBlock) {
+        self.onClickBackgroundViewBlock(self);
+    }else{
+        [self hideView];
+    }
 }
 
 - (void)showView:(UIView *)view inSuperView:(UIView *)superView viewWillShowBlock:(nullable dispatch_block_t)viewWillShowBlock viewDidShowBlock:(nullable dispatch_block_t)viewDidShowBlock{

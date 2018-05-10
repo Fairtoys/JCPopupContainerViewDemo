@@ -49,6 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) dispatch_block_t viewWillHideBlock;
 @property (nonatomic, copy, nullable) dispatch_block_t viewDidHideBlock;
 
+@property (nonatomic, copy, nullable) void (^onClickBackgroundViewBlock)( __kindof JCPopupUtils *thePopUtils);//当点击背景视图的回调，如果设置此回调，则不会触发默认关闭弹出框的逻辑，需要你自己处理关闭逻辑
 #pragma mark - views util
 
 /**
